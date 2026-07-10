@@ -1,0 +1,50 @@
+/**
+ * MRZ Product Filter — styles admin minimalistes.
+ */
+
+.mrz-product-filter-exp-sources {
+	margin: 8px 0;
+}
+
+.mrz-product-filter-exp-source-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px;
+	margin-bottom: 6px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.mrz-product-filter-exp-drag {
+	cursor: move;
+	color: #787c82;
+}
+
+.mrz-product-filter-exp-source-label {
+	flex: 1 1 auto;
+	min-width: 100px;
+}
+
+.mrz-product-filter-exp-source-open {
+	white-space: nowrap;
+}
+
+.mrz-product-filter-exp-source-remove {
+	color: #b32d2e;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.mrz-product-filter-exp-term-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 6px;
+}
+
+.mrz-product-filter-exp-term-name {
+	min-width: 140px;
+}

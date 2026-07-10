@@ -1,0 +1,204 @@
+/**
+ * MRZ Product Filter — styles front minimalistes (wireframe noir & blanc).
+ * Volontairement neutre : à surcharger dans le thème pour la charte.
+ */
+
+.mrz-product-filter-exp {
+	font-size: 14px;
+	line-height: 1.4;
+	color: #111;
+	box-sizing: border-box;
+}
+
+.mrz-product-filter-exp *,
+.mrz-product-filter-exp *::before,
+.mrz-product-filter-exp *::after {
+	box-sizing: inherit;
+}
+
+.mrz-product-filter-exp--left {
+	max-width: 260px;
+}
+
+/* Mise en page colonne gauche (auto-injection). */
+.mrz-product-filter-exp-layout--left {
+	display: flex;
+	align-items: flex-start;
+	gap: 24px;
+}
+
+.mrz-product-filter-exp-layout--left .mrz-product-filter-exp-aside {
+	flex: 0 0 240px;
+	max-width: 240px;
+}
+
+.mrz-product-filter-exp-layout--left .mrz-product-filter-exp-main {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* Sections repliables. */
+.mrz-product-filter-exp-section {
+	border: 1px solid #111;
+	margin: 0 0 -1px;
+	padding: 0;
+}
+
+.mrz-product-filter-exp-title {
+	cursor: pointer;
+	padding: 8px 10px;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: .04em;
+	list-style: none;
+}
+
+.mrz-product-filter-exp-title::-webkit-details-marker {
+	display: none;
+}
+
+.mrz-product-filter-exp-title::after {
+	content: "+";
+	float: right;
+}
+
+.mrz-product-filter-exp-section[open] > .mrz-product-filter-exp-title::after {
+	content: "\2013"; /* – */
+}
+
+.mrz-product-filter-exp-options {
+	padding: 8px 10px 12px;
+}
+
+/* Listes de cases / radios. */
+.mrz-product-filter-exp-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mrz-product-filter-exp-option {
+	margin: 0 0 4px;
+}
+
+.mrz-product-filter-exp-option label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	cursor: pointer;
+}
+
+.mrz-product-filter-exp-count {
+	margin-left: auto;
+	color: #777;
+	font-size: 12px;
+}
+
+.mrz-product-filter-exp-select {
+	width: 100%;
+}
+
+/* Pastilles de couleur. */
+.mrz-product-filter-exp-swatches {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.mrz-product-filter-exp-swatch {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 3px;
+	cursor: pointer;
+	width: 44px;
+	text-align: center;
+}
+
+.mrz-product-filter-exp-swatch input {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+}
+
+.mrz-product-filter-exp-dot {
+	display: block;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 1px solid #111;
+	background: #fff;
+}
+
+.mrz-product-filter-exp-swatch input:checked + .mrz-product-filter-exp-dot {
+	outline: 2px solid #111;
+	outline-offset: 2px;
+}
+
+.mrz-product-filter-exp-swatch-label {
+	font-size: 11px;
+	line-height: 1.1;
+	color: #444;
+}
+
+/* Prix. */
+.mrz-product-filter-exp-price-slider {
+	margin: 6px 4px 14px;
+}
+
+.mrz-product-filter-exp-price-fields {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.mrz-product-filter-exp-price-fields input {
+	width: 5em;
+}
+
+/* Actions. */
+.mrz-product-filter-exp-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 12px;
+}
+
+.mrz-product-filter-exp-reset {
+	font-size: 12px;
+	color: #111;
+}
+
+/* État de chargement. */
+.mrz-product-filter-exp-results.mrz-product-filter-exp-loading {
+	opacity: .5;
+	transition: opacity .15s ease;
+}
+
+/* Slider jQuery UI (habillage minimal noir & blanc). */
+.mrz-product-filter-exp .ui-slider {
+	position: relative;
+	height: 3px;
+	background: #ccc;
+	border: 0;
+}
+
+.mrz-product-filter-exp .ui-slider .ui-slider-range {
+	position: absolute;
+	height: 100%;
+	background: #111;
+}
+
+.mrz-product-filter-exp .ui-slider .ui-slider-handle {
+	position: absolute;
+	top: -6px;
+	width: 14px;
+	height: 14px;
+	margin-left: -7px;
+	background: #111;
+	border-radius: 50%;
+	cursor: pointer;
+	outline: none;
+}
