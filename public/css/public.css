@@ -108,12 +108,7 @@
 
 .mrz-product-filter-exp-swatch {
 	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 3px;
 	cursor: pointer;
-	width: 44px;
-	text-align: center;
 }
 
 .mrz-product-filter-exp-swatch input {
@@ -135,12 +130,6 @@
 .mrz-product-filter-exp-swatch input:checked + .mrz-product-filter-exp-dot {
 	outline: 2px solid #111;
 	outline-offset: 2px;
-}
-
-.mrz-product-filter-exp-swatch-label {
-	font-size: 11px;
-	line-height: 1.1;
-	color: #444;
 }
 
 /* Prix. */

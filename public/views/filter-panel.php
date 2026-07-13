@@ -72,7 +72,6 @@ $reset_url = remove_query_arg( $all_params );
 									<?php checked( Renderer::is_chosen( $chosen, $param, $term['slug'] ) ); ?>
 								/>
 								<span class="mrz-product-filter-exp-dot"<?php echo '' !== $color ? ' style="background-color:' . esc_attr( $color ) . '"' : ''; ?>></span>
-								<span class="mrz-product-filter-exp-swatch-label"><?php echo esc_html( $term['name'] ); ?></span>
 							</label>
 						<?php endforeach; ?>
 					</div>
