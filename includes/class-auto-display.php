@@ -21,6 +21,16 @@ final class AutoDisplay {
 	 */
 	private $position = 'left';
 
+	/**
+	 * @var bool
+	 */
+	private $sticky = false;
+
+	/**
+	 * @var int
+	 */
+	private $sticky_offset = 20;
+
 	public function register() {
 		add_action( 'template_redirect', array( $this, 'setup' ) );
 	}
@@ -40,9 +50,11 @@ final class AutoDisplay {
 			return;
 		}
 
-		$values         = FilterConfig::get_values( $id );
-		$this->active_id = $id;
-		$this->position  = in_array( $values['position'], FilterConfig::positions(), true ) ? $values['position'] : 'left';
+		$values              = FilterConfig::get_values( $id );
+		$this->active_id     = $id;
+		$this->position      = in_array( $values['position'], FilterConfig::positions(), true ) ? $values['position'] : 'left';
+		$this->sticky        = ! empty( $values['sticky'] );
+		$this->sticky_offset = (int) $values['sticky_offset'];
 
 		if ( 'left' === $this->position ) {
 			// Enveloppe result-count / tri / boucle / pagination dans une colonne
@@ -55,7 +67,13 @@ final class AutoDisplay {
 	}
 
 	public function open_layout() {
-		echo '<div class="mrz-product-filter-exp-layout mrz-product-filter-exp-layout--left"><aside class="mrz-product-filter-exp-aside">';
+		$aside_class = 'mrz-product-filter-exp-aside';
+		$aside_style = '';
+		if ( $this->sticky ) {
+			$aside_class .= ' is-sticky';
+			$aside_style  = sprintf( ' style="--mrz-pfe-sticky-top:%dpx"', $this->sticky_offset );
+		}
+		echo '<div class="mrz-product-filter-exp-layout mrz-product-filter-exp-layout--left"><aside class="' . esc_attr( $aside_class ) . '"' . $aside_style . '>'; // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped -- $aside_style est construit à partir d'un entier.
 		$this->render_panel();
 		echo '</aside><div class="mrz-product-filter-exp-main">';
 	}

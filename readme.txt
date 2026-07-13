@@ -51,6 +51,7 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 
 = 1.2.0 =
 * New: WooCommerce brands (the native `product_brand` taxonomy) can be added as a filter source, like categories and tags. Shown only when the taxonomy exists.
+* New: optional "sticky" left column — the filter panel follows the scroll, with a configurable top offset (desktop / tablet).
 
 = 1.1.1 =
 * Fix: the "products per page" override is now forced via pre_get_posts, so it applies even when the theme sets its own products-per-page (e.g. Salient).

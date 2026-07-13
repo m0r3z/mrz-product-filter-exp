@@ -27,6 +27,19 @@ $auto_targets = (array) $values['auto_targets'];
 					<input type="radio" name="mrz_product_filter_exp[position]" value="top" <?php checked( $position, 'top' ); ?> />
 					<?php esc_html_e( 'Au-dessus des produits', 'mrz-product-filter-exp' ); ?>
 				</label>
+				<p style="margin-top:10px;">
+					<label>
+						<input type="checkbox" name="mrz_product_filter_exp[sticky]" value="1" <?php checked( ! empty( $values['sticky'] ) ); ?> />
+						<?php esc_html_e( 'Panneau « collant » : suit le défilement (colonne gauche uniquement)', 'mrz-product-filter-exp' ); ?>
+					</label>
+				</p>
+				<p>
+					<label>
+						<?php esc_html_e( 'Décalage haut (px)', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[sticky_offset]" value="<?php echo esc_attr( $values['sticky_offset'] ); ?>" min="0" max="400" step="1" style="width:6em;" />
+					</label>
+					<span class="description"><?php esc_html_e( 'Espace au-dessus du panneau une fois collé (ex. pour passer sous un en-tête fixe).', 'mrz-product-filter-exp' ); ?></span>
+				</p>
 			</td>
 		</tr>
 		<tr>

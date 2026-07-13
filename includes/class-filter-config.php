@@ -73,6 +73,8 @@ final class FilterConfig {
 			'price_label'     => '',
 			'price_open'      => 1,
 			'position'        => 'left',
+			'sticky'          => 0,
+			'sticky_offset'   => 20,
 			'auto_display'    => 0,
 			'auto_targets'    => array( 'shop', 'product_cat' ),
 			'default_open'    => 1,
@@ -172,8 +174,10 @@ final class FilterConfig {
 		$clean['price_open']   = ! empty( $raw['price_open'] ) ? 1 : 0;
 
 		// Affichage.
-		$clean['position']     = ( isset( $raw['position'] ) && in_array( $raw['position'], self::positions(), true ) ) ? $raw['position'] : 'left';
-		$clean['auto_display'] = ! empty( $raw['auto_display'] ) ? 1 : 0;
+		$clean['position']      = ( isset( $raw['position'] ) && in_array( $raw['position'], self::positions(), true ) ) ? $raw['position'] : 'left';
+		$clean['sticky']        = ! empty( $raw['sticky'] ) ? 1 : 0;
+		$clean['sticky_offset'] = isset( $raw['sticky_offset'] ) ? min( 400, absint( $raw['sticky_offset'] ) ) : 20;
+		$clean['auto_display']  = ! empty( $raw['auto_display'] ) ? 1 : 0;
 
 		$targets = array();
 		if ( isset( $raw['auto_targets'] ) && is_array( $raw['auto_targets'] ) ) {

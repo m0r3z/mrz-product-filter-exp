@@ -228,10 +228,14 @@ final class DataProvider {
 			);
 		}
 
+		$position = in_array( $values['position'], FilterConfig::positions(), true ) ? $values['position'] : 'left';
+
 		return array(
-			'id'           => $post_id,
-			'position'     => in_array( $values['position'], FilterConfig::positions(), true ) ? $values['position'] : 'left',
-			'default_open' => $default_open,
+			'id'            => $post_id,
+			'position'      => $position,
+			'sticky'        => ( ! empty( $values['sticky'] ) && 'left' === $position ),
+			'sticky_offset' => (int) $values['sticky_offset'],
+			'default_open'  => $default_open,
 			'show_counts'  => ! empty( $values['show_counts'] ),
 			'show_reset'   => ! empty( $values['show_reset'] ),
 			'reset_text'   => ! empty( $values['reset_text'] ) ? $values['reset_text'] : __( 'Réinitialiser', 'mrz-product-filter-exp' ),

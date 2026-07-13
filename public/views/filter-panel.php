@@ -21,8 +21,9 @@ foreach ( $config['sections'] as $s ) {
 $reset_url = remove_query_arg( $all_params );
 ?>
 <div
-	class="mrz-product-filter-exp mrz-product-filter-exp--<?php echo esc_attr( $config['position'] ); ?>"
+	class="mrz-product-filter-exp mrz-product-filter-exp--<?php echo esc_attr( $config['position'] ); ?><?php echo ! empty( $config['sticky'] ) ? ' mrz-product-filter-exp--sticky' : ''; ?>"
 	id="<?php echo esc_attr( $uid ); ?>"
+	<?php if ( ! empty( $config['sticky'] ) ) : ?>style="--mrz-pfe-sticky-top:<?php echo (int) $config['sticky_offset']; ?>px"<?php endif; ?>
 	data-mrz-product-filter-exp="1"
 >
 	<button type="button" class="mrz-product-filter-exp-toggle" aria-expanded="false">

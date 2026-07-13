@@ -42,6 +42,16 @@
 	min-width: 0;
 }
 
+/* Panneau collant : suit le défilement (colonne gauche, desktop/tablette). */
+@media (min-width: 768px) {
+	.mrz-product-filter-exp-aside.is-sticky,
+	.mrz-product-filter-exp--sticky {
+		position: sticky;
+		top: var(--mrz-pfe-sticky-top, 20px);
+		align-self: flex-start;
+	}
+}
+
 /* Sections repliables. */
 .mrz-product-filter-exp-section {
 	border: 1px solid #111;
