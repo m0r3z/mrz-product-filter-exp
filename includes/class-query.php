@@ -27,9 +27,13 @@ final class Query {
 		$tax_query = (array) $q->get( 'tax_query' );
 
 		foreach ( array(
-			'product_cat' => 'mpf_product_cat',
-			'product_tag' => 'mpf_product_tag',
+			'product_cat'   => 'mpf_product_cat',
+			'product_tag'   => 'mpf_product_tag',
+			'product_brand' => 'mpf_product_brand',
 		) as $taxonomy => $param ) {
+			if ( ! taxonomy_exists( $taxonomy ) ) {
+				continue;
+			}
 			$slugs = $this->get_slugs_param( $param );
 			if ( ! empty( $slugs ) ) {
 				$tax_query[] = array(

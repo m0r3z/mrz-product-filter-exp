@@ -46,6 +46,15 @@ final class DataProvider {
 				'label' => __( 'Étiquettes de produits', 'mrz-product-filter-exp' ),
 			),
 		);
+
+		// Marques WooCommerce (taxonomie native product_brand, si présente).
+		if ( taxonomy_exists( 'product_brand' ) ) {
+			$sources['product_brand'] = array(
+				'type'  => 'taxonomy',
+				'label' => __( 'Marques', 'mrz-product-filter-exp' ),
+			);
+		}
+
 		foreach ( self::get_attribute_taxonomies() as $taxonomy => $label ) {
 			$sources[ $taxonomy ] = array(
 				'type'  => 'attribute',
@@ -67,6 +76,9 @@ final class DataProvider {
 		}
 		if ( 'product_tag' === $key ) {
 			return 'mpf_product_tag';
+		}
+		if ( 'product_brand' === $key ) {
+			return 'mpf_product_brand';
 		}
 		if ( function_exists( 'wc_attribute_taxonomy_slug' ) ) {
 			return 'filter_' . wc_attribute_taxonomy_slug( $key );

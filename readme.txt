@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,7 +18,7 @@ Each filter set is configured from a dedicated Custom Post Type and can be displ
 
 = Features =
 
-* Filter by product categories, tags and product attributes (checkboxes, radio buttons or dropdowns).
+* Filter by product categories, tags, brands and product attributes (checkboxes, radio buttons or dropdowns).
 * Price range slider (min / max).
 * Color swatches for a chosen attribute — the color is stored on each attribute term and reusable.
 * AJAX refresh of the product loop, with native URL parameters (shareable, SEO-friendly) and a no-JavaScript fallback that filters through WooCommerce natively.
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.2.0 =
+* New: WooCommerce brands (the native `product_brand` taxonomy) can be added as a filter source, like categories and tags. Shown only when the taxonomy exists.
 
 = 1.1.1 =
 * Fix: the "products per page" override is now forced via pre_get_posts, so it applies even when the theme sets its own products-per-page (e.g. Salient).
