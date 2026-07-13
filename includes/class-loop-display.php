@@ -15,7 +15,7 @@ final class LoopDisplay {
 	/**
 	 * Points de rupture (en px).
 	 */
-	const BP_WIDE   = 1400; // min-width : grand écran.
+	const BP_WIDE   = 1600; // min-width : grand écran.
 	const BP_TABLET = 1024; // max-width : tablette.
 	const BP_MOBILE = 767;  // max-width : mobile.
 

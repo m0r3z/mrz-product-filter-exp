@@ -51,7 +51,7 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 
 = 1.1.1 =
 * Fix: the "products per page" override is now forced via pre_get_posts, so it applies even when the theme sets its own products-per-page (e.g. Salient).
-* New: extra "large screen" column level (≥ 1400px) in the responsive columns option.
+* New: extra "large screen" column level (≥ 1600px) in the responsive columns option.
 
 = 1.1.0 =
 * New: option to control the number of products per page and the number of columns per row, with responsive breakpoints (desktop / tablet / mobile). Applies on the shop and archives targeted by the filter set.

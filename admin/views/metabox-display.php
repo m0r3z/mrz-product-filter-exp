@@ -111,7 +111,7 @@ $auto_targets = (array) $values['auto_targets'];
 					printf(
 						/* translators: 1: wide breakpoint, 2: tablet breakpoint, 3: mobile breakpoint (pixels). */
 						esc_html__( 'Paliers : grand écran ≥ %1$d px, tablette ≤ %2$d px, mobile ≤ %3$d px. S\'applique sur les cibles cochées dans « Auto-affichage » ci-dessus (boutique / archives).', 'mrz-product-filter-exp' ),
-						1400,
+						1600,
 						1024,
 						767
 					);
