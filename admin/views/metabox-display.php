@@ -90,6 +90,10 @@ $auto_targets = (array) $values['auto_targets'];
 				</p>
 				<p>
 					<label style="margin-right:14px;">
+						<?php esc_html_e( 'Grand écran', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[cols_wide]" value="<?php echo esc_attr( $values['cols_wide'] ); ?>" min="1" max="8" step="1" style="width:5em;" />
+					</label>
+					<label style="margin-right:14px;">
 						<?php esc_html_e( 'Écran', 'mrz-product-filter-exp' ); ?>
 						<input type="number" name="mrz_product_filter_exp[cols_desktop]" value="<?php echo esc_attr( $values['cols_desktop'] ); ?>" min="1" max="8" step="1" style="width:5em;" />
 					</label>
@@ -105,8 +109,9 @@ $auto_targets = (array) $values['auto_targets'];
 				<p class="description">
 					<?php
 					printf(
-						/* translators: 1: tablet breakpoint, 2: mobile breakpoint (pixels). */
-						esc_html__( 'Paliers : tablette ≤ %1$d px, mobile ≤ %2$d px. S\'applique sur les cibles cochées dans « Auto-affichage » ci-dessus (boutique / archives).', 'mrz-product-filter-exp' ),
+						/* translators: 1: wide breakpoint, 2: tablet breakpoint, 3: mobile breakpoint (pixels). */
+						esc_html__( 'Paliers : grand écran ≥ %1$d px, tablette ≤ %2$d px, mobile ≤ %3$d px. S\'applique sur les cibles cochées dans « Auto-affichage » ci-dessus (boutique / archives).', 'mrz-product-filter-exp' ),
+						1400,
 						1024,
 						767
 					);

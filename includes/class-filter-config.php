@@ -81,6 +81,7 @@ final class FilterConfig {
 			'reset_text'      => '',
 			'override_loop'   => 0,
 			'per_page'        => 12,
+			'cols_wide'       => 5,
 			'cols_desktop'    => 4,
 			'cols_tablet'     => 3,
 			'cols_mobile'     => 2,
@@ -193,6 +194,7 @@ final class FilterConfig {
 		// Contrôle de la boucle produits (par page + colonnes responsives).
 		$clean['override_loop'] = ! empty( $raw['override_loop'] ) ? 1 : 0;
 		$clean['per_page']      = isset( $raw['per_page'] ) ? min( 100, absint( $raw['per_page'] ) ) : 12;
+		$clean['cols_wide']     = isset( $raw['cols_wide'] ) ? max( 1, min( 8, absint( $raw['cols_wide'] ) ) ) : 5;
 		$clean['cols_desktop']  = isset( $raw['cols_desktop'] ) ? max( 1, min( 8, absint( $raw['cols_desktop'] ) ) ) : 4;
 		$clean['cols_tablet']   = isset( $raw['cols_tablet'] ) ? max( 1, min( 8, absint( $raw['cols_tablet'] ) ) ) : 3;
 		$clean['cols_mobile']   = isset( $raw['cols_mobile'] ) ? max( 1, min( 8, absint( $raw['cols_mobile'] ) ) ) : 2;

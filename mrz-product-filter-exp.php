@@ -3,7 +3,7 @@
  * Plugin Name:       MRZ Product Filter
  * Plugin URI:        https://github.com/m0r3z/mrz-product-filter-exp
  * Description:       Filtres de produits WooCommerce (catégories, attributs, étiquettes, prix, pastilles de couleur) affichés en colonne ou au-dessus de la boutique, avec mise à jour AJAX. Mise en page minimaliste.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Morez.co
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRZ_PRODUCT_FILTER_EXP_VERSION', '1.1.0' );
+define( 'MRZ_PRODUCT_FILTER_EXP_VERSION', '1.1.1' );
 define( 'MRZ_PRODUCT_FILTER_EXP_FILE', __FILE__ );
 define( 'MRZ_PRODUCT_FILTER_EXP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MRZ_PRODUCT_FILTER_EXP_URL', plugin_dir_url( __FILE__ ) );

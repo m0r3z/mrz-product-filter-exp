@@ -13,10 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class LoopDisplay {
 
 	/**
-	 * Points de rupture (largeur max en px).
+	 * Points de rupture (en px).
 	 */
-	const BP_TABLET = 1024;
-	const BP_MOBILE = 767;
+	const BP_WIDE   = 1400; // min-width : grand écran.
+	const BP_TABLET = 1024; // max-width : tablette.
+	const BP_MOBILE = 767;  // max-width : mobile.
 
 	/**
 	 * @var bool
@@ -29,22 +30,26 @@ final class LoopDisplay {
 	private $set = null;
 
 	public function register() {
-		// Ces filtres doivent être posés avant l'exécution de la requête produits
-		// (pre_get_posts) : on les enregistre dès l'init du module.
-		add_filter( 'loop_shop_per_page', array( $this, 'filter_per_page' ), 20 );
+		// Nombre de produits par page : on force posts_per_page en pre_get_posts
+		// avec une priorité tardive, pour primer sur le filtre loop_shop_per_page
+		// que certains thèmes (ex. Salient) posent eux-mêmes.
+		add_action( 'pre_get_posts', array( $this, 'set_per_page' ), 999 );
 		add_filter( 'loop_shop_columns', array( $this, 'filter_columns' ), 20 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_css' ), 20 );
 	}
 
 	/**
-	 * Nombre de produits par page (remplace le réglage du thème si activé).
+	 * Force le nombre de produits par page sur la requête principale de la boutique.
 	 */
-	public function filter_per_page( $per_page ) {
-		$set = $this->active_set();
-		if ( $set && ! empty( $set['override_loop'] ) && (int) $set['per_page'] > 0 ) {
-			return (int) $set['per_page'];
+	public function set_per_page( $q ) {
+		if ( is_admin() || ! $q->is_main_query() ) {
+			return;
 		}
-		return $per_page;
+		$set = $this->active_set();
+		if ( ! $set || empty( $set['override_loop'] ) || (int) $set['per_page'] < 1 ) {
+			return;
+		}
+		$q->set( 'posts_per_page', (int) $set['per_page'] );
 	}
 
 	/**
@@ -67,19 +72,25 @@ final class LoopDisplay {
 			return;
 		}
 
+		$wide    = max( 1, (int) $set['cols_wide'] );
 		$desktop = max( 1, (int) $set['cols_desktop'] );
 		$tablet  = max( 1, (int) $set['cols_tablet'] );
 		$mobile  = max( 1, (int) $set['cols_mobile'] );
 
-		$grid = 'ul.products{display:grid !important;grid-template-columns:repeat(%1$d,minmax(0,1fr)) !important;gap:24px !important;}';
+		// Base = écran standard, puis min-width (grand écran) et max-width
+		// (tablette/mobile). Les plages ne se chevauchent pas.
+		$grid  = 'ul.products{display:grid !important;grid-template-columns:repeat(%1$d,minmax(0,1fr)) !important;gap:24px !important;}';
 		$grid .= 'ul.products::before,ul.products::after{content:none !important;display:none !important;}';
 		$grid .= 'ul.products>li.product,ul.products>li{width:auto !important;max-width:none !important;margin:0 !important;float:none !important;clear:none !important;}';
-		$grid .= '@media(max-width:%2$dpx){ul.products{grid-template-columns:repeat(%3$d,minmax(0,1fr)) !important;}}';
+		$grid .= '@media(min-width:%2$dpx){ul.products{grid-template-columns:repeat(%3$d,minmax(0,1fr)) !important;}}';
 		$grid .= '@media(max-width:%4$dpx){ul.products{grid-template-columns:repeat(%5$d,minmax(0,1fr)) !important;}}';
+		$grid .= '@media(max-width:%6$dpx){ul.products{grid-template-columns:repeat(%7$d,minmax(0,1fr)) !important;}}';
 
 		$css = sprintf(
 			$grid,
 			$desktop,
+			self::BP_WIDE,
+			$wide,
 			self::BP_TABLET,
 			$tablet,
 			self::BP_MOBILE,
