@@ -25,6 +25,9 @@ $reset_url = remove_query_arg( $all_params );
 	id="<?php echo esc_attr( $uid ); ?>"
 	data-mrz-product-filter-exp="1"
 >
+	<button type="button" class="mrz-product-filter-exp-toggle" aria-expanded="false">
+		<?php esc_html_e( 'Filtres', 'mrz-product-filter-exp' ); ?>
+	</button>
 	<form class="mrz-product-filter-exp-form" method="get" action="">
 		<?php foreach ( $config['sections'] as $section ) : ?>
 			<?php

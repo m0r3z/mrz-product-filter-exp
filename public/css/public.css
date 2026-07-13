@@ -20,6 +20,11 @@
 	max-width: 260px;
 }
 
+/* Bouton de repli mobile : masqué sur desktop. */
+.mrz-product-filter-exp-toggle {
+	display: none;
+}
+
 /* Mise en page colonne gauche (auto-injection). */
 .mrz-product-filter-exp-layout--left {
 	display: flex;
@@ -189,4 +194,57 @@
 	border-radius: 50%;
 	cursor: pointer;
 	outline: none;
+}
+
+/* Mobile : le panneau devient un menu « Filtres » replié par défaut. */
+@media (max-width: 767px) {
+	.mrz-product-filter-exp--left {
+		max-width: none;
+	}
+
+	/* La colonne gauche s'empile au-dessus des produits. */
+	.mrz-product-filter-exp-layout--left {
+		display: block;
+	}
+
+	.mrz-product-filter-exp-layout--left .mrz-product-filter-exp-aside {
+		flex-basis: auto;
+		max-width: none;
+		width: 100%;
+		margin-bottom: 16px;
+	}
+
+	.mrz-product-filter-exp-toggle {
+		display: block;
+		width: 100%;
+		text-align: left;
+		padding: 10px 12px;
+		border: 1px solid #111;
+		background: #fff;
+		color: #111;
+		font-weight: 600;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: .04em;
+		cursor: pointer;
+	}
+
+	.mrz-product-filter-exp-toggle::after {
+		content: "+";
+		float: right;
+	}
+
+	.mrz-product-filter-exp.is-open .mrz-product-filter-exp-toggle::after {
+		content: "\2013"; /* – */
+	}
+
+	/* Contenu replié tant que le panneau n'est pas ouvert. */
+	.mrz-product-filter-exp-form {
+		display: none;
+		margin-top: -1px;
+	}
+
+	.mrz-product-filter-exp.is-open .mrz-product-filter-exp-form {
+		display: block;
+	}
 }

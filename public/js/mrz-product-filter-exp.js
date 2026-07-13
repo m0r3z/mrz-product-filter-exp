@@ -29,6 +29,15 @@
 		var form = wrapper.querySelector('.mrz-product-filter-exp-form');
 		if (!form) { return; }
 
+		// Bouton « Filtres » : replie/déplie tout le panneau (utile sur mobile).
+		var toggle = wrapper.querySelector('.mrz-product-filter-exp-toggle');
+		if (toggle) {
+			toggle.addEventListener('click', function () {
+				var open = wrapper.classList.toggle('is-open');
+				toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		}
+
 		var resultsEl = ensureResults();
 
 		// Paramètres gérés par ce panneau (à réinitialiser dans l'URL).
