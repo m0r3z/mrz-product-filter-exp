@@ -218,15 +218,24 @@
 		display: block;
 		width: 100%;
 		text-align: left;
-		padding: 10px 12px;
-		border: 1px solid #111;
-		background: #fff;
-		color: #111;
+		/* Même style que les en-têtes de section (bords carrés, fond blanc),
+		   on neutralise l'arrondi/ombre appliqués aux boutons par le thème. */
+		padding: 8px 10px;
+		border: 1px solid #111 !important;
+		border-radius: 0 !important;
+		background: #fff !important;
+		color: #111 !important;
+		box-shadow: none !important;
+		-webkit-appearance: none;
+		appearance: none;
 		font-weight: 600;
 		font-size: 12px;
 		text-transform: uppercase;
 		letter-spacing: .04em;
+		line-height: inherit;
 		cursor: pointer;
+		/* Chevauche la première section pour éviter la double bordure. */
+		margin: 0 0 -1px;
 	}
 
 	.mrz-product-filter-exp-toggle::after {
