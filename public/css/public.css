@@ -20,11 +20,6 @@
 	max-width: 260px;
 }
 
-/* Bouton de repli mobile : masqué sur desktop. */
-.mrz-product-filter-exp-toggle {
-	display: none;
-}
-
 /* Mise en page colonne gauche (auto-injection). */
 .mrz-product-filter-exp-layout--left {
 	display: flex;
@@ -40,16 +35,6 @@
 .mrz-product-filter-exp-layout--left .mrz-product-filter-exp-main {
 	flex: 1 1 auto;
 	min-width: 0;
-}
-
-/* Panneau collant : suit le défilement (colonne gauche, desktop/tablette). */
-@media (min-width: 768px) {
-	.mrz-product-filter-exp-aside.is-sticky,
-	.mrz-product-filter-exp--sticky {
-		position: sticky;
-		top: var(--mrz-pfe-sticky-top, 20px);
-		align-self: flex-start;
-	}
 }
 
 /* Sections repliables. */
@@ -171,9 +156,6 @@
 	margin-top: 12px;
 }
 
-.mrz-product-filter-exp-reset {
-}
-
 /* État de chargement. */
 .mrz-product-filter-exp-results.mrz-product-filter-exp-loading {
 	opacity: .5;
@@ -206,13 +188,27 @@
 	outline: none;
 }
 
+/* Bouton de repli mobile : masqué sur desktop. */
+.mrz-product-filter-exp-toggle {
+	display: none;
+}
+
+/* Panneau collant : suit le défilement (colonne gauche, desktop/tablette). */
+@media (min-width: 768px) {
+	.mrz-product-filter-exp-aside.is-sticky,
+	.mrz-product-filter-exp--sticky {
+		position: sticky;
+		top: var(--mrz-pfe-sticky-top, 20px);
+		align-self: flex-start;
+	}
+}
+
 /* Mobile : le panneau devient un menu « Filtres » replié par défaut. */
 @media (max-width: 767px) {
 	.mrz-product-filter-exp--left {
 		max-width: none;
 	}
 
-	/* La colonne gauche s'empile au-dessus des produits. */
 	.mrz-product-filter-exp-layout--left {
 		display: block;
 	}
@@ -228,8 +224,6 @@
 		display: block;
 		width: 100%;
 		text-align: left;
-		/* Même style que les en-têtes de section (bords carrés, fond blanc),
-		   on neutralise l'arrondi/ombre appliqués aux boutons par le thème. */
 		padding: 8px 10px;
 		border: 1px solid #111 !important;
 		border-radius: 0 !important;
@@ -244,7 +238,6 @@
 		letter-spacing: .04em;
 		line-height: inherit;
 		cursor: pointer;
-		/* Chevauche la première section pour éviter la double bordure. */
 		margin: 0 0 -1px;
 	}
 
@@ -257,7 +250,6 @@
 		content: "\2013"; /* – */
 	}
 
-	/* Contenu replié tant que le panneau n'est pas ouvert. */
 	.mrz-product-filter-exp-form {
 		display: none;
 		margin-top: -1px;
