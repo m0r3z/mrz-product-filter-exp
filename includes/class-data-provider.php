@@ -158,6 +158,11 @@ final class DataProvider {
 		$color_attribute = (string) $values['color_attribute'];
 		$default_open    = ! empty( $values['default_open'] );
 
+		// Sur une archive (catégorie / marque / étiquette / attribut), on
+		// restreint tous les filtres aux produits réellement présents dans ce
+		// contexte : évite de proposer un terme qui donnerait zéro résultat.
+		$context_ids = self::get_context_product_ids();
+
 		$sections = array();
 		foreach ( (array) $values['sources'] as $source ) {
 			$key = isset( $source['key'] ) ? $source['key'] : '';
@@ -173,22 +178,37 @@ final class DataProvider {
 			$label = ! empty( $source['label'] ) ? $source['label'] : $available[ $key ]['label'];
 			$open  = isset( $source['open'] ) ? ! empty( $source['open'] ) : $default_open;
 
-			$term_args = array(
-				'taxonomy'   => $key,
-				'hide_empty' => true,
-			);
 			// Sur une archive de catégorie, ne proposer que les sous-catégories
 			// de la catégorie courante (ex. dans « Déco », seulement les
 			// sous-catégories de Déco).
+			$parent = null;
 			if ( 'product_cat' === $key && function_exists( 'is_product_category' ) && is_product_category() ) {
 				$current = get_queried_object();
 				if ( $current && isset( $current->term_id ) ) {
-					$term_args['parent'] = (int) $current->term_id;
+					$parent = (int) $current->term_id;
 				}
 			}
 
-			$terms = get_terms( $term_args );
-			if ( is_wp_error( $terms ) || empty( $terms ) ) {
+			if ( is_array( $context_ids ) ) {
+				// Archive : termes présents parmi les produits du contexte,
+				// avec le compte réel du contexte.
+				$terms = self::get_context_terms( $key, $context_ids, $parent );
+			} else {
+				// Boutique / hors archive : tous les termes non vides.
+				$term_args = array(
+					'taxonomy'   => $key,
+					'hide_empty' => true,
+				);
+				if ( null !== $parent ) {
+					$term_args['parent'] = $parent;
+				}
+				$terms = get_terms( $term_args );
+				if ( is_wp_error( $terms ) ) {
+					$terms = array();
+				}
+			}
+
+			if ( empty( $terms ) ) {
 				continue;
 			}
 
@@ -242,5 +262,96 @@ final class DataProvider {
 			'sections'     => $sections,
 			'price'        => $price,
 		);
+	}
+
+	/**
+	 * IDs des produits du contexte d'archive courant (catégorie / marque /
+	 * étiquette / attribut). Retourne null hors archive (boutique) = aucune
+	 * restriction, ou un tableau (éventuellement vide) sur une archive.
+	 */
+	private static function get_context_product_ids() {
+		if ( is_admin() || ! function_exists( 'is_product_taxonomy' ) || ! is_product_taxonomy() ) {
+			return null;
+		}
+
+		$obj = get_queried_object();
+		if ( ! $obj || empty( $obj->taxonomy ) || empty( $obj->term_id ) ) {
+			return null;
+		}
+
+		$tax_query = array(
+			array(
+				'taxonomy' => $obj->taxonomy,
+				'field'    => 'term_id',
+				'terms'    => array( (int) $obj->term_id ),
+			),
+		);
+
+		if ( function_exists( 'wc_get_product_visibility_term_ids' ) ) {
+			$visibility = wc_get_product_visibility_term_ids();
+			if ( ! empty( $visibility['exclude-from-catalog'] ) ) {
+				$tax_query[] = array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'term_taxonomy_id',
+					'terms'    => array( $visibility['exclude-from-catalog'] ),
+					'operator' => 'NOT IN',
+				);
+			}
+			if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && ! empty( $visibility['outofstock'] ) ) {
+				$tax_query[] = array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'term_taxonomy_id',
+					'terms'    => array( $visibility['outofstock'] ),
+					'operator' => 'NOT IN',
+				);
+			}
+		}
+
+		$query = new \WP_Query(
+			array(
+				'post_type'           => 'product',
+				'post_status'         => 'publish',
+				'posts_per_page'      => -1,
+				'fields'              => 'ids',
+				'no_found_rows'       => true,
+				'ignore_sticky_posts' => true,
+				'tax_query'           => $tax_query, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+			)
+		);
+
+		return array_map( 'intval', $query->posts );
+	}
+
+	/**
+	 * Termes d'une taxonomie présents parmi un jeu d'IDs de produits, avec le
+	 * nombre de produits du contexte. Optionnellement limité à un parent (pour
+	 * les sous-catégories). Retourne des objets {term_id, name, slug, count}.
+	 */
+	private static function get_context_terms( $taxonomy, array $ids, $parent = null ) {
+		global $wpdb;
+
+		if ( empty( $ids ) ) {
+			return array();
+		}
+		$ids          = array_map( 'intval', $ids );
+		$placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
+
+		$sql = "SELECT t.term_id, t.name, t.slug, COUNT(tr.object_id) AS count
+			FROM {$wpdb->terms} t
+			INNER JOIN {$wpdb->term_taxonomy} tt ON tt.term_id = t.term_id
+			INNER JOIN {$wpdb->term_relationships} tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
+			WHERE tt.taxonomy = %s AND tr.object_id IN ($placeholders)";
+
+		$params = array_merge( array( $taxonomy ), $ids );
+		if ( null !== $parent ) {
+			$sql     .= ' AND tt.parent = %d';
+			$params[] = (int) $parent;
+		}
+		$sql .= ' GROUP BY t.term_id, t.name, t.slug ORDER BY t.name ASC';
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$rows = $wpdb->get_results( $wpdb->prepare( $sql, $params ) );
+
+		return is_array( $rows ) ? $rows : array();
 	}
 }
