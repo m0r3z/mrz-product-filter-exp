@@ -72,6 +72,49 @@ $auto_targets = (array) $values['auto_targets'];
 			</td>
 		</tr>
 		<tr>
+			<th scope="row"><?php esc_html_e( 'Nombre de produits', 'mrz-product-filter-exp' ); ?></th>
+			<td>
+				<label>
+					<input type="checkbox" name="mrz_product_filter_exp[override_loop]" value="1" <?php checked( ! empty( $values['override_loop'] ) ); ?> />
+					<?php esc_html_e( 'Contrôler le nombre de produits affichés (remplace le réglage du thème)', 'mrz-product-filter-exp' ); ?>
+				</label>
+				<p style="margin-top:10px;">
+					<label>
+						<?php esc_html_e( 'Produits par page', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[per_page]" value="<?php echo esc_attr( $values['per_page'] ); ?>" min="0" max="100" step="1" style="width:6em;" />
+					</label>
+					<span class="description"><?php esc_html_e( '(0 = ne pas modifier)', 'mrz-product-filter-exp' ); ?></span>
+				</p>
+				<p style="margin-top:6px;">
+					<strong><?php esc_html_e( 'Colonnes par ligne :', 'mrz-product-filter-exp' ); ?></strong>
+				</p>
+				<p>
+					<label style="margin-right:14px;">
+						<?php esc_html_e( 'Écran', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[cols_desktop]" value="<?php echo esc_attr( $values['cols_desktop'] ); ?>" min="1" max="8" step="1" style="width:5em;" />
+					</label>
+					<label style="margin-right:14px;">
+						<?php esc_html_e( 'Tablette', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[cols_tablet]" value="<?php echo esc_attr( $values['cols_tablet'] ); ?>" min="1" max="8" step="1" style="width:5em;" />
+					</label>
+					<label>
+						<?php esc_html_e( 'Mobile', 'mrz-product-filter-exp' ); ?>
+						<input type="number" name="mrz_product_filter_exp[cols_mobile]" value="<?php echo esc_attr( $values['cols_mobile'] ); ?>" min="1" max="8" step="1" style="width:5em;" />
+					</label>
+				</p>
+				<p class="description">
+					<?php
+					printf(
+						/* translators: 1: tablet breakpoint, 2: mobile breakpoint (pixels). */
+						esc_html__( 'Paliers : tablette ≤ %1$d px, mobile ≤ %2$d px. S\'applique sur les cibles cochées dans « Auto-affichage » ci-dessus (boutique / archives).', 'mrz-product-filter-exp' ),
+						1024,
+						767
+					);
+					?>
+				</p>
+			</td>
+		</tr>
+		<tr>
 			<th scope="row"><?php esc_html_e( 'Options', 'mrz-product-filter-exp' ); ?></th>
 			<td>
 				<label style="display:block;margin-bottom:6px;">

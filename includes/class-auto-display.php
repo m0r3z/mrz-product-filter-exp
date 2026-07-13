@@ -89,24 +89,6 @@ final class AutoDisplay {
 	 * Cherche un jeu de filtres en auto-affichage pour la cible donnée.
 	 */
 	private function find_filter_set( $target ) {
-		$ids = get_posts(
-			array(
-				'post_type'      => MRZ_PRODUCT_FILTER_EXP_CPT,
-				'post_status'    => 'publish',
-				'posts_per_page' => 20,
-				'fields'         => 'ids',
-				'no_found_rows'  => true,
-				'meta_key'       => '_mrz_product_filter_exp_auto_display', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-				'meta_value'     => '1', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-			)
-		);
-
-		foreach ( $ids as $id ) {
-			$values = FilterConfig::get_values( $id );
-			if ( in_array( $target, (array) $values['auto_targets'], true ) ) {
-				return (int) $id;
-			}
-		}
-		return 0;
+		return DataProvider::find_set_for_target( $target, '_mrz_product_filter_exp_auto_display' );
 	}
 }

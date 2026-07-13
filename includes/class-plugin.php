@@ -52,6 +52,7 @@ final class Plugin {
 		( new Shortcode() )->register();
 		( new AutoDisplay() )->register();
 		( new Query() )->register();
+		( new LoopDisplay() )->register();
 	}
 
 	public function notice_missing_woocommerce() {

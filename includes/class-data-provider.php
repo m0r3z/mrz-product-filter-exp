@@ -75,6 +75,36 @@ final class DataProvider {
 	}
 
 	/**
+	 * Retrouve le premier jeu de filtres publié dont la méta donnée vaut 1 et
+	 * dont les cibles d'auto-affichage incluent le contexte courant.
+	 *
+	 * @param string $target   'shop' | 'product_cat' | 'product_tag'.
+	 * @param string $meta_key Clé méta complète (ex. _mrz_product_filter_exp_auto_display).
+	 * @return int ID du jeu de filtres, ou 0.
+	 */
+	public static function find_set_for_target( $target, $meta_key ) {
+		$ids = get_posts(
+			array(
+				'post_type'      => MRZ_PRODUCT_FILTER_EXP_CPT,
+				'post_status'    => 'publish',
+				'posts_per_page' => 20,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+				'meta_key'       => $meta_key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_value'     => '1', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+
+		foreach ( $ids as $id ) {
+			$values = FilterConfig::get_values( $id );
+			if ( in_array( $target, (array) $values['auto_targets'], true ) ) {
+				return (int) $id;
+			}
+		}
+		return 0;
+	}
+
+	/**
 	 * Fourchette de prix (min/max) de tous les produits, arrondie.
 	 */
 	public static function get_price_range() {
