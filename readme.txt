@@ -1,10 +1,10 @@
-=== MRZ Product Filter ===
-Contributors: mrzxp
+=== MRZ Product Filter Exp ===
+Contributors: m0r3z
 Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.3.1 =
+* Renamed the plugin to "MRZ Product Filter Exp" so the WordPress.org slug matches the text domain (`mrz-product-filter-exp`). Set the `Contributors` line to the owning wordpress.org account. Cosmetic / metadata only.
 
 = 1.3.0 =
 * New: contextual filters — on a category / brand / tag / attribute archive, every filter (categories, brands, materials, attributes…) only lists the terms actually present among that context's products, with the real per-context counts. Avoids offering a choice that would return no products.
