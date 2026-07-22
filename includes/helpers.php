@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Vérifie si WooCommerce est actif.
  */
-function mrz_product_filter_exp_has_woocommerce() {
+function mrzpfe_has_woocommerce() {
 	return class_exists( 'WooCommerce' );
 }
 
@@ -20,7 +20,7 @@ function mrz_product_filter_exp_has_woocommerce() {
  * La fonction cœur sanitize_hex_color() n'est pas toujours chargée hors
  * contexte customizer : on fournit notre propre implémentation.
  */
-function mrz_product_filter_exp_sanitize_hex_color( $color ) {
+function mrzpfe_sanitize_hex_color( $color ) {
 	$color = trim( (string) $color );
 	if ( '' === $color ) {
 		return '';

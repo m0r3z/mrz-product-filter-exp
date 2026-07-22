@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use MrzProductFilterExp\DataProvider;
-use MrzProductFilterExp\FilterConfig;
+use Mrzpfe\DataProvider;
+use Mrzpfe\FilterConfig;
 
 $available = DataProvider::get_available_sources();
 $sources   = isset( $values['sources'] ) ? (array) $values['sources'] : array();
@@ -29,7 +29,7 @@ $render_row = static function ( $index, $row, $available ) {
 	$logic = isset( $row['logic'] ) ? $row['logic'] : 'or';
 	$label = isset( $row['label'] ) ? $row['label'] : '';
 	$open  = ! empty( $row['open'] );
-	$base  = 'mrz_product_filter_exp[sources][' . $index . ']';
+	$base  = 'mrzpfe[sources][' . $index . ']';
 	?>
 	<div class="mrz-product-filter-exp-source-row">
 		<span class="mrz-product-filter-exp-drag dashicons dashicons-menu" aria-hidden="true"></span>

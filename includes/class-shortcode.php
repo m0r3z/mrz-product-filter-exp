@@ -1,9 +1,9 @@
 <?php
 /**
- * Shortcode [mrz_product_filter id="X"].
+ * Shortcode [mrzpfe_product_filter id="X"].
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Shortcode {
 
 	public function register() {
-		add_shortcode( 'mrz_product_filter', array( $this, 'render' ) );
+		add_shortcode( 'mrzpfe_product_filter', array( $this, 'render' ) );
 	}
 
 	public function render( $atts ) {
@@ -21,11 +21,11 @@ final class Shortcode {
 				'id' => 0,
 			),
 			$atts,
-			'mrz_product_filter'
+			'mrzpfe_product_filter'
 		);
 
 		$id = absint( $atts['id'] );
-		if ( $id <= 0 || get_post_type( $id ) !== MRZ_PRODUCT_FILTER_EXP_CPT ) {
+		if ( $id <= 0 || get_post_type( $id ) !== MRZPFE_CPT ) {
 			return '';
 		}
 

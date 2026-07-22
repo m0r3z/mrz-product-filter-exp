@@ -4,7 +4,7 @@
  * et nombre de colonnes par palier responsive (écran / tablette / mobile).
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -98,7 +98,7 @@ final class LoopDisplay {
 		);
 
 		$handle = 'mrz-product-filter-exp-loop';
-		wp_register_style( $handle, false, array(), MRZ_PRODUCT_FILTER_EXP_VERSION );
+		wp_register_style( $handle, false, array(), MRZPFE_VERSION );
 		wp_enqueue_style( $handle );
 		wp_add_inline_style( $handle, $css );
 	}
@@ -121,7 +121,7 @@ final class LoopDisplay {
 			return $this->set;
 		}
 
-		$id = DataProvider::find_set_for_target( $target, '_mrz_product_filter_exp_override_loop' );
+		$id = DataProvider::find_set_for_target( $target, '_mrzpfe_override_loop' );
 		if ( $id ) {
 			$this->set = FilterConfig::get_values( $id );
 		}

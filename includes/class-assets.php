@@ -3,7 +3,7 @@
  * Enregistrement / enqueue conditionnel des assets front.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -24,16 +24,16 @@ final class Assets {
 	public function register_assets() {
 		wp_register_style(
 			self::HANDLE_STYLE,
-			MRZ_PRODUCT_FILTER_EXP_URL . 'public/css/public.css',
+			MRZPFE_URL . 'public/css/public.css',
 			array(),
-			MRZ_PRODUCT_FILTER_EXP_VERSION
+			MRZPFE_VERSION
 		);
 
 		wp_register_script(
 			self::HANDLE_SCRIPT,
-			MRZ_PRODUCT_FILTER_EXP_URL . 'public/js/mrz-product-filter-exp.js',
+			MRZPFE_URL . 'public/js/mrz-product-filter-exp.js',
 			array( 'jquery', 'jquery-ui-slider' ),
-			MRZ_PRODUCT_FILTER_EXP_VERSION,
+			MRZPFE_VERSION,
 			true
 		);
 	}

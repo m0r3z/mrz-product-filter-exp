@@ -7,7 +7,7 @@ Filtres de produits WooCommerce (catégories, attributs, étiquettes, prix, past
 - Chaque **jeu de filtres** est un post d'un CPT dédié (`Jeux de filtres`) avec ses métaboxes.
 - On y choisit les **sources** (catégories, étiquettes, attributs), leur mode d'affichage (cases à cocher, boutons radio, menu déroulant) et l'ordre (glisser-déposer).
 - Un **attribut « couleur »** peut être rendu en pastilles ; la couleur est stockée sur chaque terme (réutilisable, éditable aussi depuis Produits → Attributs).
-- Le panneau s'affiche **automatiquement** sur la boutique / les archives (colonne gauche ou au-dessus), ou manuellement via `[mrz_product_filter id="X"]`.
+- Le panneau s'affiche **automatiquement** sur la boutique / les archives (colonne gauche ou au-dessus), ou manuellement via `[mrzpfe_product_filter id="X"]`.
 
 ## Filtrage
 
@@ -21,7 +21,7 @@ Filtres de produits WooCommerce (catégories, attributs, étiquettes, prix, past
 
 ## Développement
 
-- Namespace : `MrzProductFilterExp\`, autoloader maison (`includes/class-*.php`).
+- Namespace : `Mrzpfe\`, autoloader maison (`includes/class-*.php`).
 - Text domain : `mrz-product-filter-exp`.
 - Régénérer les traductions : `wp i18n make-pot . languages/mrz-product-filter-exp.pot`.
 

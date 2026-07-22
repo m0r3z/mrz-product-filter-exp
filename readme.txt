@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ Each filter set is configured from a dedicated Custom Post Type and can be displ
 * Color swatches for a chosen attribute — the color is stored on each attribute term and reusable.
 * AJAX refresh of the product loop, with native URL parameters (shareable, SEO-friendly) and a no-JavaScript fallback that filters through WooCommerce natively.
 * Collapsible sections (native `<details>`), with a per-section and global "expanded by default" setting.
-* Automatic display on the shop and category / tag archives (left column or above the products), or manual placement with `[mrz_product_filter id="X"]`.
+* Automatic display on the shop and category / tag archives (left column or above the products), or manual placement with `[mrzpfe_product_filter id="X"]`.
 * Multiple filter sets via a dedicated Custom Post Type — a different configuration per context.
 * Translation-ready (text-domain `mrz-product-filter-exp`, .pot file provided).
 
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.4.0 =
+* All internal code identifiers now use the `mrzpfe` / `MRZPFE` / `Mrzpfe` prefix (4+ characters) per the WordPress.org guidelines: functions, classes, namespace, constants, options/transients, shortcode (`[mrzpfe_product_filter]`), AJAX action and the custom post type (now `mrzpfe_filter`). Note: an existing filter set created with a previous version must be recreated.
 
 = 1.3.1 =
 * Renamed the plugin to "MRZ Product Filter Exp" so the WordPress.org slug matches the text domain (`mrz-product-filter-exp`). Set the `Contributors` line to the owning wordpress.org account. Cosmetic / metadata only.

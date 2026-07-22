@@ -65,8 +65,8 @@
 
 	// Attribut couleur : recharge les termes en AJAX et reconstruit les lignes.
 	function initTermColors() {
-		var sel = document.getElementById('mrz_product_filter_exp_color_attribute');
-		var container = document.getElementById('mrz_product_filter_exp_term_colors');
+		var sel = document.getElementById('mrzpfe_color_attribute');
+		var container = document.getElementById('mrzpfe_term_colors');
 		var tpl = document.getElementById('mrz-product-filter-exp-term-color-template');
 		if (!sel || !container || !tpl) { return; }
 
@@ -95,7 +95,7 @@
 				return;
 			}
 			var form = new FormData();
-			form.append('action', 'mrz_product_filter_exp_fetch_terms');
+			form.append('action', 'mrzpfe_fetch_terms');
 			form.append('nonce', nonce);
 			form.append('taxonomy', tax);
 

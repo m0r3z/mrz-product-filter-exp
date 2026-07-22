@@ -3,7 +3,7 @@
  * Auto-injection du panneau de filtres sur la boutique et les archives produits.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -107,6 +107,6 @@ final class AutoDisplay {
 	 * Cherche un jeu de filtres en auto-affichage pour la cible donnée.
 	 */
 	private function find_filter_set( $target ) {
-		return DataProvider::find_set_for_target( $target, '_mrz_product_filter_exp_auto_display' );
+		return DataProvider::find_set_for_target( $target, '_mrzpfe_auto_display' );
 	}
 }

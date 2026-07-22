@@ -3,7 +3,7 @@
  * Génère le HTML du panneau de filtres à partir d'une configuration.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,7 +29,7 @@ final class Renderer {
 		$chosen = self::get_chosen_values( $config );
 
 		ob_start();
-		include MRZ_PRODUCT_FILTER_EXP_DIR . 'public/views/filter-panel.php';
+		include MRZPFE_DIR . 'public/views/filter-panel.php';
 		return ob_get_clean();
 	}
 

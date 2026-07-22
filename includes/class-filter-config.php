@@ -3,7 +3,7 @@
  * Métaboxes de configuration d'un jeu de filtres + sauvegarde sécurisée.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class FilterConfig {
 
-	const NONCE_ACTION = 'mrz_product_filter_exp_save';
-	const NONCE_NAME   = '_mrz_product_filter_exp_nonce';
+	const NONCE_ACTION = 'mrzpfe_save';
+	const NONCE_NAME   = '_mrzpfe_nonce';
 
 	/**
 	 * Valeurs autorisées pour les champs à choix fermé.
@@ -32,16 +32,16 @@ final class FilterConfig {
 
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
-		add_action( 'save_post_' . MRZ_PRODUCT_FILTER_EXP_CPT, array( $this, 'save' ), 10, 2 );
+		add_action( 'save_post_' . MRZPFE_CPT, array( $this, 'save' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
-		add_action( 'wp_ajax_mrz_product_filter_exp_fetch_terms', array( $this, 'ajax_fetch_terms' ) );
+		add_action( 'wp_ajax_mrzpfe_fetch_terms', array( $this, 'ajax_fetch_terms' ) );
 	}
 
 	public function add_metaboxes() {
-		add_meta_box( 'mrz_product_filter_exp_source', __( 'Sources des filtres', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZ_PRODUCT_FILTER_EXP_CPT, 'normal', 'high', array( 'view' => 'source' ) );
-		add_meta_box( 'mrz_product_filter_exp_colors', __( 'Pastilles de couleur', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZ_PRODUCT_FILTER_EXP_CPT, 'normal', 'default', array( 'view' => 'colors' ) );
-		add_meta_box( 'mrz_product_filter_exp_display', __( 'Affichage', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZ_PRODUCT_FILTER_EXP_CPT, 'normal', 'default', array( 'view' => 'display' ) );
-		add_meta_box( 'mrz_product_filter_exp_shortcode', __( 'Shortcode', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZ_PRODUCT_FILTER_EXP_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
+		add_meta_box( 'mrzpfe_source', __( 'Sources des filtres', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
+		add_meta_box( 'mrzpfe_colors', __( 'Pastilles de couleur', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'colors' ) );
+		add_meta_box( 'mrzpfe_display', __( 'Affichage', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'display' ) );
+		add_meta_box( 'mrzpfe_shortcode', __( 'Shortcode', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
 	}
 
 	public function render( $post, $metabox ) {
@@ -52,7 +52,7 @@ final class FilterConfig {
 		}
 
 		$view = isset( $metabox['args']['view'] ) ? $metabox['args']['view'] : '';
-		$file = MRZ_PRODUCT_FILTER_EXP_DIR . 'admin/views/metabox-' . $view . '.php';
+		$file = MRZPFE_DIR . 'admin/views/metabox-' . $view . '.php';
 
 		if ( ! file_exists( $file ) ) {
 			return;
@@ -91,7 +91,7 @@ final class FilterConfig {
 
 		$out = array();
 		foreach ( $defaults as $key => $default ) {
-			$stored = get_post_meta( $post_id, '_mrz_product_filter_exp_' . $key, true );
+			$stored = get_post_meta( $post_id, '_mrzpfe_' . $key, true );
 			if ( '' === $stored || null === $stored ) {
 				$out[ $key ] = $default;
 			} elseif ( is_array( $default ) ) {
@@ -123,8 +123,8 @@ final class FilterConfig {
 			return;
 		}
 
-		$raw = isset( $_POST['mrz_product_filter_exp'] ) && is_array( $_POST['mrz_product_filter_exp'] )
-			? wp_unslash( $_POST['mrz_product_filter_exp'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- chaque champ est assaini individuellement ci-dessous.
+		$raw = isset( $_POST['mrzpfe'] ) && is_array( $_POST['mrzpfe'] )
+			? wp_unslash( $_POST['mrzpfe'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- chaque champ est assaini individuellement ci-dessous.
 			: array();
 
 		$clean = array();
@@ -204,7 +204,7 @@ final class FilterConfig {
 		$clean['cols_mobile']   = isset( $raw['cols_mobile'] ) ? max( 1, min( 8, absint( $raw['cols_mobile'] ) ) ) : 2;
 
 		foreach ( $clean as $key => $value ) {
-			update_post_meta( $post_id, '_mrz_product_filter_exp_' . $key, $value );
+			update_post_meta( $post_id, '_mrzpfe_' . $key, $value );
 		}
 
 		// Couleurs par terme — stockées globalement en term_meta.
@@ -214,24 +214,24 @@ final class FilterConfig {
 				if ( ! $term_id || ! term_exists( $term_id ) ) {
 					continue;
 				}
-				$hex = mrz_product_filter_exp_sanitize_hex_color( (string) $color );
+				$hex = mrzpfe_sanitize_hex_color( (string) $color );
 				if ( '' === $hex ) {
-					delete_term_meta( $term_id, '_mrz_product_filter_exp_color' );
+					delete_term_meta( $term_id, '_mrzpfe_color' );
 				} else {
-					update_term_meta( $term_id, '_mrz_product_filter_exp_color', $hex );
+					update_term_meta( $term_id, '_mrzpfe_color', $hex );
 				}
 			}
 		}
 
 		// Invalide le cache transient de ce jeu de filtres.
-		delete_transient( 'mrz_product_filter_exp_' . (int) $post_id );
+		delete_transient( 'mrzpfe_' . (int) $post_id );
 	}
 
 	/**
 	 * Handler AJAX (admin) : récupère les termes d'un attribut + leur couleur.
 	 */
 	public function ajax_fetch_terms() {
-		check_ajax_referer( 'mrz_product_filter_exp_fetch_terms', 'nonce' );
+		check_ajax_referer( 'mrzpfe_fetch_terms', 'nonce' );
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			wp_send_json_error( array( 'message' => __( 'Accès refusé.', 'mrz-product-filter-exp' ) ), 403 );
 		}
@@ -256,7 +256,7 @@ final class FilterConfig {
 			$out[] = array(
 				'id'    => (int) $term->term_id,
 				'name'  => $term->name,
-				'color' => (string) get_term_meta( $term->term_id, '_mrz_product_filter_exp_color', true ),
+				'color' => (string) get_term_meta( $term->term_id, '_mrzpfe_color', true ),
 			);
 		}
 		wp_send_json_success( $out );
@@ -270,7 +270,7 @@ final class FilterConfig {
 			return;
 		}
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-		if ( ! $screen || MRZ_PRODUCT_FILTER_EXP_CPT !== $screen->post_type ) {
+		if ( ! $screen || MRZPFE_CPT !== $screen->post_type ) {
 			return;
 		}
 
@@ -278,16 +278,16 @@ final class FilterConfig {
 
 		wp_enqueue_style(
 			'mrz-product-filter-exp-admin',
-			MRZ_PRODUCT_FILTER_EXP_URL . 'admin/css/admin.css',
+			MRZPFE_URL . 'admin/css/admin.css',
 			array(),
-			MRZ_PRODUCT_FILTER_EXP_VERSION
+			MRZPFE_VERSION
 		);
 
 		wp_enqueue_script(
 			'mrz-product-filter-exp-admin',
-			MRZ_PRODUCT_FILTER_EXP_URL . 'admin/js/admin.js',
+			MRZPFE_URL . 'admin/js/admin.js',
 			array( 'jquery', 'jquery-ui-sortable', 'wp-color-picker' ),
-			MRZ_PRODUCT_FILTER_EXP_VERSION,
+			MRZPFE_VERSION,
 			true
 		);
 	}

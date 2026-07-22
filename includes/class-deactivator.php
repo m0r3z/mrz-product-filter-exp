@@ -3,7 +3,7 @@
  * Actions exécutées à la désactivation du plugin.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

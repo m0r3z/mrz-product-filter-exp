@@ -3,7 +3,7 @@
  * Classe principale : bootstrap des modules.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -40,7 +40,7 @@ final class Plugin {
 		// hébergées sur translate.wordpress.org sont chargées automatiquement par
 		// le cœur pour les plugins publiés sur le répertoire officiel.
 
-		if ( ! mrz_product_filter_exp_has_woocommerce() ) {
+		if ( ! mrzpfe_has_woocommerce() ) {
 			add_action( 'admin_notices', array( $this, 'notice_missing_woocommerce' ) );
 			return;
 		}

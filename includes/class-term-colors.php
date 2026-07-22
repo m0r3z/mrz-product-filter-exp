@@ -4,7 +4,7 @@
  * pour l'affichage en pastilles. Stockage en term_meta globale.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class TermColors {
 
-	const NONCE_ACTION = 'mrz_product_filter_exp_save_term';
-	const NONCE_NAME   = '_mrz_product_filter_exp_term_nonce';
-	const META_KEY     = '_mrz_product_filter_exp_color';
+	const NONCE_ACTION = 'mrzpfe_save_term';
+	const NONCE_NAME   = '_mrzpfe_term_nonce';
+	const META_KEY     = '_mrzpfe_color';
 
 	public function register() {
 		// Les attributs sont enregistrés par WooCommerce sur init : on hooke après.
@@ -35,8 +35,8 @@ final class TermColors {
 		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
 		?>
 		<div class="form-field">
-			<label for="mrz_product_filter_exp_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
-			<input type="text" name="mrz_product_filter_exp_color" id="mrz_product_filter_exp_color" value="" class="mrz-product-filter-exp-color-picker" />
+			<label for="mrzpfe_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
+			<input type="text" name="mrzpfe_color" id="mrzpfe_color" value="" class="mrz-product-filter-exp-color-picker" />
 			<p><?php esc_html_e( 'Couleur affichée en pastille dans le filtre par couleur.', 'mrz-product-filter-exp' ); ?></p>
 		</div>
 		<?php
@@ -48,10 +48,10 @@ final class TermColors {
 		?>
 		<tr class="form-field">
 			<th scope="row">
-				<label for="mrz_product_filter_exp_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
+				<label for="mrzpfe_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
 			</th>
 			<td>
-				<input type="text" name="mrz_product_filter_exp_color" id="mrz_product_filter_exp_color" value="<?php echo esc_attr( $color ); ?>" class="mrz-product-filter-exp-color-picker" />
+				<input type="text" name="mrzpfe_color" id="mrzpfe_color" value="<?php echo esc_attr( $color ); ?>" class="mrz-product-filter-exp-color-picker" />
 				<p class="description"><?php esc_html_e( 'Couleur affichée en pastille dans le filtre par couleur.', 'mrz-product-filter-exp' ); ?></p>
 			</td>
 		</tr>
@@ -69,8 +69,8 @@ final class TermColors {
 			return;
 		}
 
-		$color = isset( $_POST['mrz_product_filter_exp_color'] )
-			? mrz_product_filter_exp_sanitize_hex_color( wp_unslash( $_POST['mrz_product_filter_exp_color'] ) )
+		$color = isset( $_POST['mrzpfe_color'] )
+			? mrzpfe_sanitize_hex_color( wp_unslash( $_POST['mrzpfe_color'] ) )
 			: '';
 
 		if ( '' === $color ) {

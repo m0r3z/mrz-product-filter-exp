@@ -3,7 +3,7 @@
  * Enregistre le Custom Post Type des jeux de filtres.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,8 +13,8 @@ final class CPT {
 
 	public function register() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_filter( 'manage_' . MRZ_PRODUCT_FILTER_EXP_CPT . '_posts_columns', array( $this, 'columns' ) );
-		add_action( 'manage_' . MRZ_PRODUCT_FILTER_EXP_CPT . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
+		add_filter( 'manage_' . MRZPFE_CPT . '_posts_columns', array( $this, 'columns' ) );
+		add_action( 'manage_' . MRZPFE_CPT . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_menu_icon_style' ) );
 	}
 
@@ -55,7 +55,7 @@ final class CPT {
 			'query_var'          => false,
 		);
 
-		register_post_type( MRZ_PRODUCT_FILTER_EXP_CPT, $args );
+		register_post_type( MRZPFE_CPT, $args );
 	}
 
 	/**
@@ -63,11 +63,11 @@ final class CPT {
 	 */
 	public function enqueue_menu_icon_style() {
 		$handle = 'mrz-product-filter-exp-menu-icon';
-		wp_register_style( $handle, false, array(), MRZ_PRODUCT_FILTER_EXP_VERSION );
+		wp_register_style( $handle, false, array(), MRZPFE_VERSION );
 		wp_enqueue_style( $handle );
 
-		$url = esc_url( MRZ_PRODUCT_FILTER_EXP_URL . 'assets/menu-icon.svg?ver=' . MRZ_PRODUCT_FILTER_EXP_VERSION );
-		$sel = '#adminmenu li.menu-top[id*="' . MRZ_PRODUCT_FILTER_EXP_CPT . '"]';
+		$url = esc_url( MRZPFE_URL . 'assets/menu-icon.svg?ver=' . MRZPFE_VERSION );
+		$sel = '#adminmenu li.menu-top[id*="' . MRZPFE_CPT . '"]';
 
 		$css  = $sel . ' .wp-menu-image{background:none!important;background-color:rgba(240,246,252,.6)!important;';
 		$css .= '-webkit-mask:url(\'' . $url . '\') no-repeat 9px 7px/20px;mask:url(\'' . $url . '\') no-repeat 9px 7px/20px;}';
@@ -85,18 +85,18 @@ final class CPT {
 		foreach ( $columns as $key => $label ) {
 			$new[ $key ] = $label;
 			if ( 'title' === $key ) {
-				$new['mrz_product_filter_exp_shortcode'] = __( 'Shortcode', 'mrz-product-filter-exp' );
+				$new['mrzpfe_shortcode'] = __( 'Shortcode', 'mrz-product-filter-exp' );
 			}
 		}
 		return $new;
 	}
 
 	public function column_content( $column, $post_id ) {
-		if ( 'mrz_product_filter_exp_shortcode' !== $column ) {
+		if ( 'mrzpfe_shortcode' !== $column ) {
 			return;
 		}
 		printf(
-			'<code>[mrz_product_filter id="%d"]</code>',
+			'<code>[mrzpfe_product_filter id="%d"]</code>',
 			(int) $post_id
 		);
 	}

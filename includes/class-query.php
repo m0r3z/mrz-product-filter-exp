@@ -8,7 +8,7 @@
  * puis remplace la boucle produits : aucune requête reconstruite côté serveur.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use MrzProductFilterExp\Renderer;
+use Mrzpfe\Renderer;
 
 // Liste de tous les paramètres gérés, pour construire l'URL de réinitialisation.
 $all_params = array( 'min_price', 'max_price', 'paged' );

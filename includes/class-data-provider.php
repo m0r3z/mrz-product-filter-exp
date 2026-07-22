@@ -4,7 +4,7 @@
  * construit la configuration consommée par le rendu.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class DataProvider {
 
-	const CACHE_PREFIX = 'mrz_product_filter_exp_';
+	const CACHE_PREFIX = 'mrzpfe_';
 
 	/**
 	 * Liste des attributs de produits globaux : [ pa_slug => label ].
@@ -91,13 +91,13 @@ final class DataProvider {
 	 * dont les cibles d'auto-affichage incluent le contexte courant.
 	 *
 	 * @param string $target   'shop' | 'product_cat' | 'product_tag'.
-	 * @param string $meta_key Clé méta complète (ex. _mrz_product_filter_exp_auto_display).
+	 * @param string $meta_key Clé méta complète (ex. _mrzpfe_auto_display).
 	 * @return int ID du jeu de filtres, ou 0.
 	 */
 	public static function find_set_for_target( $target, $meta_key ) {
 		$ids = get_posts(
 			array(
-				'post_type'      => MRZ_PRODUCT_FILTER_EXP_CPT,
+				'post_type'      => MRZPFE_CPT,
 				'post_status'    => 'publish',
 				'posts_per_page' => 20,
 				'fields'         => 'ids',
@@ -149,7 +149,7 @@ final class DataProvider {
 	 */
 	public static function get_config( $post_id ) {
 		$post_id = absint( $post_id );
-		if ( $post_id <= 0 || get_post_type( $post_id ) !== MRZ_PRODUCT_FILTER_EXP_CPT ) {
+		if ( $post_id <= 0 || get_post_type( $post_id ) !== MRZPFE_CPT ) {
 			return null;
 		}
 
@@ -220,7 +220,7 @@ final class DataProvider {
 					'count' => (int) $term->count,
 				);
 				if ( 'color' === $mode ) {
-					$row['color'] = (string) get_term_meta( $term->term_id, '_mrz_product_filter_exp_color', true );
+					$row['color'] = (string) get_term_meta( $term->term_id, '_mrzpfe_color', true );
 				}
 				$term_rows[] = $row;
 			}

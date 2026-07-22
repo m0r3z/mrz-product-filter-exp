@@ -3,7 +3,7 @@
  * Actions exécutées à l'activation du plugin.
  */
 
-namespace MrzProductFilterExp;
+namespace Mrzpfe;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Activator {
 
 	public static function activate() {
-		if ( ! mrz_product_filter_exp_has_woocommerce() ) {
-			deactivate_plugins( MRZ_PRODUCT_FILTER_EXP_BASENAME );
+		if ( ! mrzpfe_has_woocommerce() ) {
+			deactivate_plugins( MRZPFE_BASENAME );
 			wp_die(
 				esc_html__( 'MRZ Product Filter nécessite WooCommerce. Veuillez installer et activer WooCommerce avant d\'activer ce plugin.', 'mrz-product-filter-exp' ),
 				esc_html__( 'Dépendance manquante', 'mrz-product-filter-exp' ),
