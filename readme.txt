@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.4.1 =
+* Maintenance: build/CI update only (deploy workflow). No functional change to the plugin.
 
 = 1.4.0 =
 * All internal code identifiers now use the `mrzpfe` / `MRZPFE` / `Mrzpfe` prefix (4+ characters) per the WordPress.org guidelines: functions, classes, namespace, constants, options/transients, shortcode (`[mrzpfe_product_filter]`), AJAX action and the custom post type (now `mrzpfe_filter`). Note: an existing filter set created with a previous version must be recreated.
