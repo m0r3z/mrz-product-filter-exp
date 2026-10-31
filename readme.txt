@@ -52,6 +52,7 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 = 1.5.0 =
 * Declared WooCommerce as a required plugin (`Requires Plugins` header, WordPress 6.5+).
 * All source strings (admin, front end and plugin description) are now in English, as expected by translate.wordpress.org. French is provided as a fr_FR translation.
+* The French (fr_FR) translation now ships with the plugin and is loaded from its `languages/` folder, so French sites stay in French. A translate.wordpress.org language pack, when available, takes precedence.
 * Admin JavaScript messages (color attribute terms loading) are now translatable.
 
 = 1.4.1 =

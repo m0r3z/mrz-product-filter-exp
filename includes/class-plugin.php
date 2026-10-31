@@ -30,15 +30,22 @@ final class Plugin {
 
 	private function __construct() {}
 
+	/**
+	 * Déclare le dossier languages/ du plugin comme source de traductions.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'mrz-product-filter-exp', false, dirname( MRZPFE_BASENAME ) . '/languages' );
+	}
+
 	public function boot() {
 		if ( $this->booted ) {
 			return;
 		}
 		$this->booted = true;
 
-		// Pas de load_plugin_textdomain() : depuis WordPress 4.6, les traductions
-		// hébergées sur translate.wordpress.org sont chargées automatiquement par
-		// le cœur pour les plugins publiés sur le répertoire officiel.
+		// Traductions livrées dans languages/ (fr_FR notamment). Un pack de
+		// translate.wordpress.org, s'il existe, reste prioritaire.
+		add_action( 'init', array( $this, 'load_textdomain' ), 1 );
 
 		if ( ! mrzpfe_has_woocommerce() ) {
 			add_action( 'admin_notices', array( $this, 'notice_missing_woocommerce' ) );
