@@ -39,11 +39,11 @@ final class DataProvider {
 		$sources = array(
 			'product_cat' => array(
 				'type'  => 'taxonomy',
-				'label' => __( 'Catégories de produits', 'mrz-product-filter-exp' ),
+				'label' => __( 'Product categories', 'mrz-product-filter-exp' ),
 			),
 			'product_tag' => array(
 				'type'  => 'taxonomy',
-				'label' => __( 'Étiquettes de produits', 'mrz-product-filter-exp' ),
+				'label' => __( 'Product tags', 'mrz-product-filter-exp' ),
 			),
 		);
 
@@ -51,7 +51,7 @@ final class DataProvider {
 		if ( taxonomy_exists( 'product_brand' ) ) {
 			$sources['product_brand'] = array(
 				'type'  => 'taxonomy',
-				'label' => __( 'Marques', 'mrz-product-filter-exp' ),
+				'label' => __( 'Brands', 'mrz-product-filter-exp' ),
 			);
 		}
 
@@ -241,7 +241,7 @@ final class DataProvider {
 		if ( ! empty( $values['enable_price'] ) ) {
 			$range = self::get_price_range();
 			$price = array(
-				'label' => ! empty( $values['price_label'] ) ? $values['price_label'] : __( 'Prix', 'mrz-product-filter-exp' ),
+				'label' => ! empty( $values['price_label'] ) ? $values['price_label'] : __( 'Price', 'mrz-product-filter-exp' ),
 				'open'  => ! empty( $values['price_open'] ),
 				'min'   => $range['min'],
 				'max'   => $range['max'],
@@ -258,7 +258,7 @@ final class DataProvider {
 			'default_open'  => $default_open,
 			'show_counts'  => ! empty( $values['show_counts'] ),
 			'show_reset'   => ! empty( $values['show_reset'] ),
-			'reset_text'   => ! empty( $values['reset_text'] ) ? $values['reset_text'] : __( 'Réinitialiser', 'mrz-product-filter-exp' ),
+			'reset_text'   => ! empty( $values['reset_text'] ) ? $values['reset_text'] : __( 'Reset filters', 'mrz-product-filter-exp' ),
 			'sections'     => $sections,
 			'price'        => $price,
 		);

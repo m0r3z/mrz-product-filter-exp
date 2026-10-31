@@ -38,9 +38,9 @@ final class FilterConfig {
 	}
 
 	public function add_metaboxes() {
-		add_meta_box( 'mrzpfe_source', __( 'Sources des filtres', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
-		add_meta_box( 'mrzpfe_colors', __( 'Pastilles de couleur', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'colors' ) );
-		add_meta_box( 'mrzpfe_display', __( 'Affichage', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'display' ) );
+		add_meta_box( 'mrzpfe_source', __( 'Filter sources', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'high', array( 'view' => 'source' ) );
+		add_meta_box( 'mrzpfe_colors', __( 'Color swatches', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'colors' ) );
+		add_meta_box( 'mrzpfe_display', __( 'Display', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'normal', 'default', array( 'view' => 'display' ) );
 		add_meta_box( 'mrzpfe_shortcode', __( 'Shortcode', 'mrz-product-filter-exp' ), array( $this, 'render' ), MRZPFE_CPT, 'side', 'high', array( 'view' => 'shortcode' ) );
 	}
 
@@ -233,12 +233,12 @@ final class FilterConfig {
 	public function ajax_fetch_terms() {
 		check_ajax_referer( 'mrzpfe_fetch_terms', 'nonce' );
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Accès refusé.', 'mrz-product-filter-exp' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Access denied.', 'mrz-product-filter-exp' ) ), 403 );
 		}
 
 		$taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) : '';
 		if ( '' === $taxonomy || ! taxonomy_exists( $taxonomy ) ) {
-			wp_send_json_error( array( 'message' => __( 'Attribut invalide.', 'mrz-product-filter-exp' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'Invalid attribute.', 'mrz-product-filter-exp' ) ), 400 );
 		}
 
 		$terms = get_terms(
@@ -289,6 +289,19 @@ final class FilterConfig {
 			array( 'jquery', 'jquery-ui-sortable', 'wp-color-picker' ),
 			MRZPFE_VERSION,
 			true
+		);
+
+		wp_localize_script(
+			'mrz-product-filter-exp-admin',
+			'mrzpfeAdmin',
+			array(
+				'i18n' => array(
+					'selectAttributeFirst' => __( 'Select an attribute above first.', 'mrz-product-filter-exp' ),
+					'loadError'            => __( 'Loading error.', 'mrz-product-filter-exp' ),
+					'noTerms'              => __( 'This attribute has no terms.', 'mrz-product-filter-exp' ),
+					'networkError'         => __( 'Network error.', 'mrz-product-filter-exp' ),
+				),
+			)
 		);
 	}
 }

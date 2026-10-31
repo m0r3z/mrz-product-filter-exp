@@ -27,7 +27,7 @@ $reset_url = remove_query_arg( $all_params );
 	data-mrz-product-filter-exp="1"
 >
 	<button type="button" class="mrz-product-filter-exp-toggle" aria-expanded="false">
-		<?php esc_html_e( 'Filtres', 'mrz-product-filter-exp' ); ?>
+		<?php esc_html_e( 'Filters', 'mrz-product-filter-exp' ); ?>
 	</button>
 	<form class="mrz-product-filter-exp-form" method="get" action="">
 		<?php foreach ( $config['sections'] as $section ) : ?>
@@ -50,7 +50,7 @@ $reset_url = remove_query_arg( $all_params );
 				<?php if ( 'dropdown' === $mode ) : ?>
 					<div class="mrz-product-filter-exp-options">
 						<select name="<?php echo esc_attr( $param ); ?>" class="mrz-product-filter-exp-select">
-							<option value=""><?php esc_html_e( '— Tous —', 'mrz-product-filter-exp' ); ?></option>
+							<option value=""><?php esc_html_e( '— All —', 'mrz-product-filter-exp' ); ?></option>
 							<?php foreach ( $section['terms'] as $term ) : ?>
 								<option value="<?php echo esc_attr( $term['slug'] ); ?>" <?php selected( Renderer::is_chosen( $chosen, $param, $term['slug'] ) ); ?>>
 									<?php
@@ -87,7 +87,7 @@ $reset_url = remove_query_arg( $all_params );
 							<li class="mrz-product-filter-exp-option">
 								<label>
 									<input type="radio" name="<?php echo esc_attr( $param ); ?>" value="" <?php checked( empty( $chosen['terms'][ $param ] ) ); ?> />
-									<span><?php esc_html_e( '— Tous —', 'mrz-product-filter-exp' ); ?></span>
+									<span><?php esc_html_e( '— All —', 'mrz-product-filter-exp' ); ?></span>
 								</label>
 							</li>
 						<?php endif; ?>
@@ -124,12 +124,12 @@ $reset_url = remove_query_arg( $all_params );
 					<div class="mrz-product-filter-exp-price-slider" aria-hidden="true"></div>
 					<div class="mrz-product-filter-exp-price-fields">
 						<label>
-							<span class="screen-reader-text"><?php esc_html_e( 'Prix minimum', 'mrz-product-filter-exp' ); ?></span>
+							<span class="screen-reader-text"><?php esc_html_e( 'Minimum price', 'mrz-product-filter-exp' ); ?></span>
 							<input type="number" class="mrz-product-filter-exp-price-min" name="min_price" value="<?php echo esc_attr( $cur_min ); ?>" min="<?php echo esc_attr( $price['min'] ); ?>" max="<?php echo esc_attr( $price['max'] ); ?>" step="1" />
 						</label>
 						<span class="mrz-product-filter-exp-price-sep">–</span>
 						<label>
-							<span class="screen-reader-text"><?php esc_html_e( 'Prix maximum', 'mrz-product-filter-exp' ); ?></span>
+							<span class="screen-reader-text"><?php esc_html_e( 'Maximum price', 'mrz-product-filter-exp' ); ?></span>
 							<input type="number" class="mrz-product-filter-exp-price-max" name="max_price" value="<?php echo esc_attr( $cur_max ); ?>" min="<?php echo esc_attr( $price['min'] ); ?>" max="<?php echo esc_attr( $price['max'] ); ?>" step="1" />
 						</label>
 					</div>
@@ -138,7 +138,7 @@ $reset_url = remove_query_arg( $all_params );
 		<?php endif; ?>
 
 		<div class="mrz-product-filter-exp-actions">
-			<button type="submit" class="mrz-product-filter-exp-submit button"><?php esc_html_e( 'Filtrer', 'mrz-product-filter-exp' ); ?></button>
+			<button type="submit" class="mrz-product-filter-exp-submit button"><?php esc_html_e( 'Filter', 'mrz-product-filter-exp' ); ?></button>
 			<?php if ( $config['show_reset'] ) : ?>
 				<a class="mrz-product-filter-exp-reset" href="<?php echo esc_url( $reset_url ); ?>"><?php echo esc_html( $config['reset_text'] ); ?></a>
 			<?php endif; ?>

@@ -35,9 +35,9 @@ final class TermColors {
 		wp_nonce_field( self::NONCE_ACTION, self::NONCE_NAME );
 		?>
 		<div class="form-field">
-			<label for="mrzpfe_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
+			<label for="mrzpfe_color"><?php esc_html_e( 'Filter color', 'mrz-product-filter-exp' ); ?></label>
 			<input type="text" name="mrzpfe_color" id="mrzpfe_color" value="" class="mrz-product-filter-exp-color-picker" />
-			<p><?php esc_html_e( 'Couleur affichée en pastille dans le filtre par couleur.', 'mrz-product-filter-exp' ); ?></p>
+			<p><?php esc_html_e( 'Color shown as a swatch in the color filter.', 'mrz-product-filter-exp' ); ?></p>
 		</div>
 		<?php
 	}
@@ -48,11 +48,11 @@ final class TermColors {
 		?>
 		<tr class="form-field">
 			<th scope="row">
-				<label for="mrzpfe_color"><?php esc_html_e( 'Couleur du filtre', 'mrz-product-filter-exp' ); ?></label>
+				<label for="mrzpfe_color"><?php esc_html_e( 'Filter color', 'mrz-product-filter-exp' ); ?></label>
 			</th>
 			<td>
 				<input type="text" name="mrzpfe_color" id="mrzpfe_color" value="<?php echo esc_attr( $color ); ?>" class="mrz-product-filter-exp-color-picker" />
-				<p class="description"><?php esc_html_e( 'Couleur affichée en pastille dans le filtre par couleur.', 'mrz-product-filter-exp' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Color shown as a swatch in the color filter.', 'mrz-product-filter-exp' ); ?></p>
 			</td>
 		</tr>
 		<?php

@@ -61,7 +61,7 @@ final class Plugin {
 		}
 		printf(
 			'<div class="notice notice-error"><p>%s</p></div>',
-			esc_html__( 'MRZ Product Filter nécessite WooCommerce pour fonctionner.', 'mrz-product-filter-exp' )
+			esc_html__( 'MRZ Product Filter requires WooCommerce to work.', 'mrz-product-filter-exp' )
 		);
 	}
 }

@@ -2,16 +2,404 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Product Filter 1.0.0\n"
+"Project-Id-Version: MRZ Product Filter Exp 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-product-filter-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-10T00:00:00+00:00\n"
+"POT-Creation-Date: 2026-10-31T16:36:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-product-filter-exp\n"
 
-#. Note : ce fichier .pot est un modèle d'en-tête. Régénérez-le avec les chaînes
-#. à jour via : wp i18n make-pot . languages/mrz-product-filter-exp.pot
+#. Plugin Name of the plugin
+#: mrz-product-filter-exp.php
+msgid "MRZ Product Filter Exp"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: mrz-product-filter-exp.php
+msgid "https://github.com/m0r3z/mrz-product-filter-exp"
+msgstr ""
+
+#. Description of the plugin
+#: mrz-product-filter-exp.php
+msgid "WooCommerce product filters (categories, attributes, tags, price, color swatches) shown in a column or above the shop, with AJAX updates. Minimalist layout."
+msgstr ""
+
+#. Author of the plugin
+#: mrz-product-filter-exp.php
+msgid "Morez.co"
+msgstr ""
+
+#. Author URI of the plugin
+#: mrz-product-filter-exp.php
+msgid "https://morez.co"
+msgstr ""
+
+#: admin/views/metabox-colors.php:36
+msgid "Color attribute"
+msgstr ""
+
+#: admin/views/metabox-colors.php:40
+msgid "No global product attributes are defined. Create one under Products → Attributes."
+msgstr ""
+
+#: admin/views/metabox-colors.php:43
+msgid "— None —"
+msgstr ""
+
+#: admin/views/metabox-colors.php:50
+msgid "This attribute will be displayed as color swatches in the filter (if it is added to the filter sources)."
+msgstr ""
+
+#: admin/views/metabox-colors.php:55
+msgid "Color per term"
+msgstr ""
+
+#: admin/views/metabox-colors.php:62
+#: includes/class-filter-config.php:299
+msgid "Select an attribute above first."
+msgstr ""
+
+#: admin/views/metabox-colors.php:64
+#: includes/class-filter-config.php:301
+msgid "This attribute has no terms."
+msgstr ""
+
+#: admin/views/metabox-colors.php:80
+msgid "The color is saved on the term itself (reusable). You can also set it under Products → Attributes → (attribute) → term."
+msgstr ""
+
+#: admin/views/metabox-display.php:19
+msgid "Position"
+msgstr ""
+
+#: admin/views/metabox-display.php:23
+msgid "Left column"
+msgstr ""
+
+#: admin/views/metabox-display.php:28
+msgid "Above products"
+msgstr ""
+
+#: admin/views/metabox-display.php:33
+msgid "Sticky panel: stays visible while scrolling (left column only)"
+msgstr ""
+
+#: admin/views/metabox-display.php:38
+msgid "Top offset (px)"
+msgstr ""
+
+#: admin/views/metabox-display.php:41
+msgid "Space above the panel once it sticks (e.g. to clear a fixed header)."
+msgstr ""
+
+#: admin/views/metabox-display.php:46
+msgid "Automatic display"
+msgstr ""
+
+#: admin/views/metabox-display.php:50
+msgid "Automatically display this filter set on the shop / archives below"
+msgstr ""
+
+#: admin/views/metabox-display.php:55
+msgid "Shop page"
+msgstr ""
+
+#: admin/views/metabox-display.php:59
+msgid "Category archives"
+msgstr ""
+
+#: admin/views/metabox-display.php:63
+msgid "Tag archives"
+msgstr ""
+
+#: admin/views/metabox-display.php:67
+msgid "Otherwise, place the panel manually with the shortcode. Only one automatically displayed filter set is used per context."
+msgstr ""
+
+#: admin/views/metabox-display.php:72
+msgid "Price filter"
+msgstr ""
+
+#: admin/views/metabox-display.php:76
+msgid "Enable the price slider"
+msgstr ""
+
+#: admin/views/metabox-display.php:79
+msgid "Price title (optional)"
+msgstr ""
+
+#: admin/views/metabox-display.php:83
+msgid "Section expanded by default"
+msgstr ""
+
+#: admin/views/metabox-display.php:88
+msgid "Number of products"
+msgstr ""
+
+#: admin/views/metabox-display.php:92
+msgid "Control the number of products displayed (overrides the theme setting)"
+msgstr ""
+
+#: admin/views/metabox-display.php:96
+msgid "Products per page"
+msgstr ""
+
+#: admin/views/metabox-display.php:99
+msgid "(0 = do not change)"
+msgstr ""
+
+#: admin/views/metabox-display.php:102
+msgid "Columns per row:"
+msgstr ""
+
+#: admin/views/metabox-display.php:106
+msgid "Wide screen"
+msgstr ""
+
+#: admin/views/metabox-display.php:110
+msgid "Desktop"
+msgstr ""
+
+#: admin/views/metabox-display.php:114
+msgid "Tablet"
+msgstr ""
+
+#: admin/views/metabox-display.php:118
+msgid "Mobile"
+msgstr ""
+
+#. translators: 1: wide breakpoint, 2: tablet breakpoint, 3: mobile breakpoint (pixels).
+#: admin/views/metabox-display.php:126
+#, php-format
+msgid "Breakpoints: wide screen ≥ %1$d px, tablet ≤ %2$d px, mobile ≤ %3$d px. Applies to the targets checked under “Automatic display” above (shop / archives)."
+msgstr ""
+
+#: admin/views/metabox-display.php:136
+msgid "Options"
+msgstr ""
+
+#: admin/views/metabox-display.php:140
+msgid "Sections expanded by default (unless set per section)"
+msgstr ""
+
+#: admin/views/metabox-display.php:144
+msgid "Show the product count for each term"
+msgstr ""
+
+#: admin/views/metabox-display.php:148
+msgid "Show the reset button"
+msgstr ""
+
+#: admin/views/metabox-display.php:150
+msgid "Button text (default: Reset filters)"
+msgstr ""
+
+#: admin/views/metabox-shortcode.php:13
+msgid "Paste this shortcode to display this filter set manually:"
+msgstr ""
+
+#: admin/views/metabox-shortcode.php:18
+msgid "Or enable automatic display in the “Display” meta box to insert it into the shop automatically."
+msgstr ""
+
+#: admin/views/metabox-source.php:38
+msgid "— Select —"
+msgstr ""
+
+#: admin/views/metabox-source.php:46
+msgid "Title (optional)"
+msgstr ""
+
+#: admin/views/metabox-source.php:49
+msgid "Checkboxes"
+msgstr ""
+
+#: admin/views/metabox-source.php:50
+msgid "Radio buttons"
+msgstr ""
+
+#: admin/views/metabox-source.php:51
+msgid "Dropdown"
+msgstr ""
+
+#: admin/views/metabox-source.php:56
+msgid "OR"
+msgstr ""
+
+#: admin/views/metabox-source.php:57
+msgid "AND"
+msgstr ""
+
+#: admin/views/metabox-source.php:63
+msgid "Expanded"
+msgstr ""
+
+#: admin/views/metabox-source.php:66
+msgid "Remove"
+msgstr ""
+
+#: admin/views/metabox-source.php:73
+msgid "Add the filters to display (categories, tags, attributes). Drag and drop to reorder them. The attribute selected as “color” below is automatically displayed as color swatches."
+msgstr ""
+
+#: admin/views/metabox-source.php:84
+msgid "Add filter"
+msgstr ""
+
+#: includes/class-activator.php:18
+msgid "MRZ Product Filter requires WooCommerce. Please install and activate WooCommerce before activating this plugin."
+msgstr ""
+
+#: includes/class-activator.php:19
+msgid "Missing dependency"
+msgstr ""
+
+#: includes/class-cpt.php:23
+msgctxt "post type general name"
+msgid "Filter sets"
+msgstr ""
+
+#: includes/class-cpt.php:24
+msgctxt "post type singular name"
+msgid "Filter set"
+msgstr ""
+
+#: includes/class-cpt.php:25
+msgctxt "admin menu"
+msgid "MRZ Product Filter"
+msgstr ""
+
+#: includes/class-cpt.php:26
+msgctxt "add new on admin bar"
+msgid "Filter set"
+msgstr ""
+
+#: includes/class-cpt.php:27
+msgctxt "filter set"
+msgid "Add"
+msgstr ""
+
+#: includes/class-cpt.php:28
+msgid "Add filter set"
+msgstr ""
+
+#: includes/class-cpt.php:29
+msgid "New filter set"
+msgstr ""
+
+#: includes/class-cpt.php:30
+msgid "Edit filter set"
+msgstr ""
+
+#: includes/class-cpt.php:31
+msgid "View filter set"
+msgstr ""
+
+#: includes/class-cpt.php:32
+msgid "All filter sets"
+msgstr ""
+
+#: includes/class-cpt.php:33
+msgid "Search filter sets"
+msgstr ""
+
+#: includes/class-cpt.php:34
+msgid "No filter sets found."
+msgstr ""
+
+#: includes/class-cpt.php:35
+msgid "No filter sets found in Trash."
+msgstr ""
+
+#: includes/class-cpt.php:88
+#: includes/class-filter-config.php:44
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-data-provider.php:42
+msgid "Product categories"
+msgstr ""
+
+#: includes/class-data-provider.php:46
+msgid "Product tags"
+msgstr ""
+
+#: includes/class-data-provider.php:54
+msgid "Brands"
+msgstr ""
+
+#: includes/class-data-provider.php:244
+msgid "Price"
+msgstr ""
+
+#: includes/class-data-provider.php:261
+msgid "Reset filters"
+msgstr ""
+
+#: includes/class-filter-config.php:41
+msgid "Filter sources"
+msgstr ""
+
+#: includes/class-filter-config.php:42
+msgid "Color swatches"
+msgstr ""
+
+#: includes/class-filter-config.php:43
+msgid "Display"
+msgstr ""
+
+#: includes/class-filter-config.php:236
+msgid "Access denied."
+msgstr ""
+
+#: includes/class-filter-config.php:241
+msgid "Invalid attribute."
+msgstr ""
+
+#: includes/class-filter-config.php:300
+msgid "Loading error."
+msgstr ""
+
+#: includes/class-filter-config.php:302
+msgid "Network error."
+msgstr ""
+
+#: includes/class-plugin.php:64
+msgid "MRZ Product Filter requires WooCommerce to work."
+msgstr ""
+
+#: includes/class-term-colors.php:38
+#: includes/class-term-colors.php:51
+msgid "Filter color"
+msgstr ""
+
+#: includes/class-term-colors.php:40
+#: includes/class-term-colors.php:55
+msgid "Color shown as a swatch in the color filter."
+msgstr ""
+
+#: public/views/filter-panel.php:30
+msgid "Filters"
+msgstr ""
+
+#: public/views/filter-panel.php:53
+#: public/views/filter-panel.php:90
+msgid "— All —"
+msgstr ""
+
+#: public/views/filter-panel.php:127
+msgid "Minimum price"
+msgstr ""
+
+#: public/views/filter-panel.php:132
+msgid "Maximum price"
+msgstr ""
+
+#: public/views/filter-panel.php:141
+msgid "Filter"
+msgstr ""

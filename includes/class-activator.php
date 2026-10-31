@@ -15,8 +15,8 @@ final class Activator {
 		if ( ! mrzpfe_has_woocommerce() ) {
 			deactivate_plugins( MRZPFE_BASENAME );
 			wp_die(
-				esc_html__( 'MRZ Product Filter nécessite WooCommerce. Veuillez installer et activer WooCommerce avant d\'activer ce plugin.', 'mrz-product-filter-exp' ),
-				esc_html__( 'Dépendance manquante', 'mrz-product-filter-exp' ),
+				esc_html__( 'MRZ Product Filter requires WooCommerce. Please install and activate WooCommerce before activating this plugin.', 'mrz-product-filter-exp' ),
+				esc_html__( 'Missing dependency', 'mrz-product-filter-exp' ),
 				array( 'back_link' => true )
 			);
 		}

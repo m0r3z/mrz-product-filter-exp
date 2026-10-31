@@ -72,6 +72,7 @@
 
 		var ajaxUrl = container.getAttribute('data-ajax-url');
 		var nonce = container.getAttribute('data-nonce');
+		var i18n = (window.mrzpfeAdmin && window.mrzpfeAdmin.i18n) || {};
 
 		function escHtml(s) {
 			return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -91,7 +92,7 @@
 			var tax = sel.value;
 			container.innerHTML = '<p class="description">…</p>';
 			if (!tax) {
-				container.innerHTML = '<p class="description">Sélectionnez d\'abord un attribut ci-dessus.</p>';
+				container.innerHTML = '<p class="description">' + escHtml(i18n.selectAttributeFirst || '') + '</p>';
 				return;
 			}
 			var form = new FormData();
@@ -104,19 +105,19 @@
 				.then(function (json) {
 					container.innerHTML = '';
 					if (!json || !json.success) {
-						container.innerHTML = '<p class="description">Erreur de chargement.</p>';
+						container.innerHTML = '<p class="description">' + escHtml(i18n.loadError || '') + '</p>';
 						return;
 					}
 					var terms = json.data || [];
 					if (!terms.length) {
-						container.innerHTML = '<p class="description">Aucun terme dans cet attribut.</p>';
+						container.innerHTML = '<p class="description">' + escHtml(i18n.noTerms || '') + '</p>';
 						return;
 					}
 					terms.forEach(function (t) { container.appendChild(buildRow(t)); });
 					initColorPickers(container);
 				})
 				.catch(function () {
-					container.innerHTML = '<p class="description">Erreur réseau.</p>';
+					container.innerHTML = '<p class="description">' + escHtml(i18n.networkError || '') + '</p>';
 				});
 		});
 	}

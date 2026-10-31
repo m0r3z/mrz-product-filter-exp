@@ -20,19 +20,19 @@ final class CPT {
 
 	public function register_post_type() {
 		$labels = array(
-			'name'               => _x( 'Jeux de filtres', 'post type general name', 'mrz-product-filter-exp' ),
-			'singular_name'      => _x( 'Jeu de filtres', 'post type singular name', 'mrz-product-filter-exp' ),
+			'name'               => _x( 'Filter sets', 'post type general name', 'mrz-product-filter-exp' ),
+			'singular_name'      => _x( 'Filter set', 'post type singular name', 'mrz-product-filter-exp' ),
 			'menu_name'          => _x( 'MRZ Product Filter', 'admin menu', 'mrz-product-filter-exp' ),
-			'name_admin_bar'     => _x( 'Jeu de filtres', 'add new on admin bar', 'mrz-product-filter-exp' ),
-			'add_new'            => _x( 'Ajouter', 'filter set', 'mrz-product-filter-exp' ),
-			'add_new_item'       => __( 'Ajouter un jeu de filtres', 'mrz-product-filter-exp' ),
-			'new_item'           => __( 'Nouveau jeu de filtres', 'mrz-product-filter-exp' ),
-			'edit_item'          => __( 'Modifier le jeu de filtres', 'mrz-product-filter-exp' ),
-			'view_item'          => __( 'Voir le jeu de filtres', 'mrz-product-filter-exp' ),
-			'all_items'          => __( 'Tous les jeux de filtres', 'mrz-product-filter-exp' ),
-			'search_items'       => __( 'Rechercher un jeu de filtres', 'mrz-product-filter-exp' ),
-			'not_found'          => __( 'Aucun jeu de filtres trouvé.', 'mrz-product-filter-exp' ),
-			'not_found_in_trash' => __( 'Aucun jeu de filtres dans la corbeille.', 'mrz-product-filter-exp' ),
+			'name_admin_bar'     => _x( 'Filter set', 'add new on admin bar', 'mrz-product-filter-exp' ),
+			'add_new'            => _x( 'Add', 'filter set', 'mrz-product-filter-exp' ),
+			'add_new_item'       => __( 'Add filter set', 'mrz-product-filter-exp' ),
+			'new_item'           => __( 'New filter set', 'mrz-product-filter-exp' ),
+			'edit_item'          => __( 'Edit filter set', 'mrz-product-filter-exp' ),
+			'view_item'          => __( 'View filter set', 'mrz-product-filter-exp' ),
+			'all_items'          => __( 'All filter sets', 'mrz-product-filter-exp' ),
+			'search_items'       => __( 'Search filter sets', 'mrz-product-filter-exp' ),
+			'not_found'          => __( 'No filter sets found.', 'mrz-product-filter-exp' ),
+			'not_found_in_trash' => __( 'No filter sets found in Trash.', 'mrz-product-filter-exp' ),
 		);
 
 		$args = array(
