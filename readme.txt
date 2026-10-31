@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,11 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.5.0 =
+* Declared WooCommerce as a required plugin (`Requires Plugins` header, WordPress 6.5+).
+* All source strings (admin, front end and plugin description) are now in English, as expected by translate.wordpress.org. French is provided as a fr_FR translation.
+* Admin JavaScript messages (color attribute terms loading) are now translatable.
 
 = 1.4.1 =
 * Maintenance: build/CI update only (deploy workflow). No functional change to the plugin.
