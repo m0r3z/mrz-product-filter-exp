@@ -1,0 +1,31 @@
+name: Update WordPress.org readme and assets
+
+# Déclenchement : push sur main qui touche readme.txt ou .wordpress-org/.
+# Publie le readme (trunk + tag stable) et les assets sur le SVN sans
+# release. Le code ne part toujours que par un tag (deploy-to-wp-org.yml).
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'readme.txt'
+      - '.wordpress-org/**'
+
+jobs:
+  assets:
+    name: Push readme and assets to WordPress.org SVN
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: WordPress.org plugin asset/readme update
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: mrz-product-filter-exp
+          # L'action compare main (hors .distignore) au trunk SVN et
+          # s'arrête en erreur si autre chose que readme.txt a changé.
+          # Lors d'une release, le push de main fait donc échouer ce run :
+          # c'est attendu, le tag vX.Y.Z déploie ensuite le tout.
