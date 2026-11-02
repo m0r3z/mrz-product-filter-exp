@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Product Filter Exp 1.5.0\n"
+"Project-Id-Version: MRZ Product Filter Exp 1.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-product-filter-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-31T16:36:17+00:00\n"
+"POT-Creation-Date: 2026-11-02T15:05:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-product-filter-exp\n"
@@ -39,163 +39,163 @@ msgstr ""
 msgid "https://morez.co"
 msgstr ""
 
-#: admin/views/metabox-colors.php:36
+#: admin/views/metabox-colors.php:39
 msgid "Color attribute"
 msgstr ""
 
-#: admin/views/metabox-colors.php:40
+#: admin/views/metabox-colors.php:43
 msgid "No global product attributes are defined. Create one under Products → Attributes."
 msgstr ""
 
-#: admin/views/metabox-colors.php:43
+#: admin/views/metabox-colors.php:46
 msgid "— None —"
 msgstr ""
 
-#: admin/views/metabox-colors.php:50
+#: admin/views/metabox-colors.php:53
 msgid "This attribute will be displayed as color swatches in the filter (if it is added to the filter sources)."
 msgstr ""
 
-#: admin/views/metabox-colors.php:55
+#: admin/views/metabox-colors.php:58
 msgid "Color per term"
 msgstr ""
 
-#: admin/views/metabox-colors.php:62
+#: admin/views/metabox-colors.php:65
 #: includes/class-filter-config.php:299
 msgid "Select an attribute above first."
 msgstr ""
 
-#: admin/views/metabox-colors.php:64
+#: admin/views/metabox-colors.php:67
 #: includes/class-filter-config.php:301
 msgid "This attribute has no terms."
 msgstr ""
 
-#: admin/views/metabox-colors.php:80
+#: admin/views/metabox-colors.php:83
 msgid "The color is saved on the term itself (reusable). You can also set it under Products → Attributes → (attribute) → term."
 msgstr ""
 
-#: admin/views/metabox-display.php:19
+#: admin/views/metabox-display.php:22
 msgid "Position"
 msgstr ""
 
-#: admin/views/metabox-display.php:23
+#: admin/views/metabox-display.php:26
 msgid "Left column"
 msgstr ""
 
-#: admin/views/metabox-display.php:28
+#: admin/views/metabox-display.php:31
 msgid "Above products"
 msgstr ""
 
-#: admin/views/metabox-display.php:33
+#: admin/views/metabox-display.php:36
 msgid "Sticky panel: stays visible while scrolling (left column only)"
 msgstr ""
 
-#: admin/views/metabox-display.php:38
+#: admin/views/metabox-display.php:41
 msgid "Top offset (px)"
 msgstr ""
 
-#: admin/views/metabox-display.php:41
+#: admin/views/metabox-display.php:44
 msgid "Space above the panel once it sticks (e.g. to clear a fixed header)."
 msgstr ""
 
-#: admin/views/metabox-display.php:46
+#: admin/views/metabox-display.php:49
 msgid "Automatic display"
 msgstr ""
 
-#: admin/views/metabox-display.php:50
+#: admin/views/metabox-display.php:53
 msgid "Automatically display this filter set on the shop / archives below"
 msgstr ""
 
-#: admin/views/metabox-display.php:55
+#: admin/views/metabox-display.php:58
 msgid "Shop page"
 msgstr ""
 
-#: admin/views/metabox-display.php:59
+#: admin/views/metabox-display.php:62
 msgid "Category archives"
 msgstr ""
 
-#: admin/views/metabox-display.php:63
+#: admin/views/metabox-display.php:66
 msgid "Tag archives"
 msgstr ""
 
-#: admin/views/metabox-display.php:67
+#: admin/views/metabox-display.php:70
 msgid "Otherwise, place the panel manually with the shortcode. Only one automatically displayed filter set is used per context."
 msgstr ""
 
-#: admin/views/metabox-display.php:72
+#: admin/views/metabox-display.php:75
 msgid "Price filter"
 msgstr ""
 
-#: admin/views/metabox-display.php:76
+#: admin/views/metabox-display.php:79
 msgid "Enable the price slider"
 msgstr ""
 
-#: admin/views/metabox-display.php:79
+#: admin/views/metabox-display.php:82
 msgid "Price title (optional)"
 msgstr ""
 
-#: admin/views/metabox-display.php:83
+#: admin/views/metabox-display.php:86
 msgid "Section expanded by default"
 msgstr ""
 
-#: admin/views/metabox-display.php:88
+#: admin/views/metabox-display.php:91
 msgid "Number of products"
 msgstr ""
 
-#: admin/views/metabox-display.php:92
+#: admin/views/metabox-display.php:95
 msgid "Control the number of products displayed (overrides the theme setting)"
 msgstr ""
 
-#: admin/views/metabox-display.php:96
+#: admin/views/metabox-display.php:99
 msgid "Products per page"
 msgstr ""
 
-#: admin/views/metabox-display.php:99
+#: admin/views/metabox-display.php:102
 msgid "(0 = do not change)"
 msgstr ""
 
-#: admin/views/metabox-display.php:102
+#: admin/views/metabox-display.php:105
 msgid "Columns per row:"
 msgstr ""
 
-#: admin/views/metabox-display.php:106
+#: admin/views/metabox-display.php:109
 msgid "Wide screen"
 msgstr ""
 
-#: admin/views/metabox-display.php:110
+#: admin/views/metabox-display.php:113
 msgid "Desktop"
 msgstr ""
 
-#: admin/views/metabox-display.php:114
+#: admin/views/metabox-display.php:117
 msgid "Tablet"
 msgstr ""
 
-#: admin/views/metabox-display.php:118
+#: admin/views/metabox-display.php:121
 msgid "Mobile"
 msgstr ""
 
 #. translators: 1: wide breakpoint, 2: tablet breakpoint, 3: mobile breakpoint (pixels).
-#: admin/views/metabox-display.php:126
+#: admin/views/metabox-display.php:129
 #, php-format
 msgid "Breakpoints: wide screen ≥ %1$d px, tablet ≤ %2$d px, mobile ≤ %3$d px. Applies to the targets checked under “Automatic display” above (shop / archives)."
 msgstr ""
 
-#: admin/views/metabox-display.php:136
+#: admin/views/metabox-display.php:139
 msgid "Options"
 msgstr ""
 
-#: admin/views/metabox-display.php:140
+#: admin/views/metabox-display.php:143
 msgid "Sections expanded by default (unless set per section)"
 msgstr ""
 
-#: admin/views/metabox-display.php:144
+#: admin/views/metabox-display.php:147
 msgid "Show the product count for each term"
 msgstr ""
 
-#: admin/views/metabox-display.php:148
+#: admin/views/metabox-display.php:151
 msgid "Show the reset button"
 msgstr ""
 
-#: admin/views/metabox-display.php:150
+#: admin/views/metabox-display.php:153
 msgid "Button text (default: Reset filters)"
 msgstr ""
 
@@ -207,47 +207,47 @@ msgstr ""
 msgid "Or enable automatic display in the “Display” meta box to insert it into the shop automatically."
 msgstr ""
 
-#: admin/views/metabox-source.php:38
+#: admin/views/metabox-source.php:41
 msgid "— Select —"
 msgstr ""
 
-#: admin/views/metabox-source.php:46
+#: admin/views/metabox-source.php:49
 msgid "Title (optional)"
 msgstr ""
 
-#: admin/views/metabox-source.php:49
+#: admin/views/metabox-source.php:52
 msgid "Checkboxes"
 msgstr ""
 
-#: admin/views/metabox-source.php:50
+#: admin/views/metabox-source.php:53
 msgid "Radio buttons"
 msgstr ""
 
-#: admin/views/metabox-source.php:51
+#: admin/views/metabox-source.php:54
 msgid "Dropdown"
 msgstr ""
 
-#: admin/views/metabox-source.php:56
+#: admin/views/metabox-source.php:59
 msgid "OR"
 msgstr ""
 
-#: admin/views/metabox-source.php:57
+#: admin/views/metabox-source.php:60
 msgid "AND"
 msgstr ""
 
-#: admin/views/metabox-source.php:63
+#: admin/views/metabox-source.php:66
 msgid "Expanded"
 msgstr ""
 
-#: admin/views/metabox-source.php:66
+#: admin/views/metabox-source.php:69
 msgid "Remove"
 msgstr ""
 
-#: admin/views/metabox-source.php:73
+#: admin/views/metabox-source.php:76
 msgid "Add the filters to display (categories, tags, attributes). Drag and drop to reorder them. The attribute selected as “color” below is automatically displayed as color swatches."
 msgstr ""
 
-#: admin/views/metabox-source.php:84
+#: admin/views/metabox-source.php:87
 msgid "Add filter"
 msgstr ""
 
@@ -369,7 +369,7 @@ msgstr ""
 msgid "Network error."
 msgstr ""
 
-#: includes/class-plugin.php:64
+#: includes/class-plugin.php:71
 msgid "MRZ Product Filter requires WooCommerce to work."
 msgstr ""
 
@@ -383,23 +383,23 @@ msgstr ""
 msgid "Color shown as a swatch in the color filter."
 msgstr ""
 
-#: public/views/filter-panel.php:30
+#: public/views/filter-panel.php:33
 msgid "Filters"
 msgstr ""
 
-#: public/views/filter-panel.php:53
-#: public/views/filter-panel.php:90
+#: public/views/filter-panel.php:56
+#: public/views/filter-panel.php:93
 msgid "— All —"
 msgstr ""
 
-#: public/views/filter-panel.php:127
+#: public/views/filter-panel.php:130
 msgid "Minimum price"
 msgstr ""
 
-#: public/views/filter-panel.php:132
+#: public/views/filter-panel.php:135
 msgid "Maximum price"
 msgstr ""
 
-#: public/views/filter-panel.php:141
+#: public/views/filter-panel.php:144
 msgid "Filter"
 msgstr ""
