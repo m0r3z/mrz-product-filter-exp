@@ -3,10 +3,12 @@
  * Plugin Name:       MRZ Product Filter Exp
  * Plugin URI:        https://github.com/m0r3z/mrz-product-filter-exp
  * Description:       WooCommerce product filters (categories, attributes, tags, price, color swatches) shown in a column or above the shop, with AJAX updates. Minimalist layout.
- * Version:           1.5.0
+ * Version:           1.5.1
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
+ * WC requires at least: 8.0
+ * WC tested up to:      11.2
  * Author:            Morez.co
  * Author URI:        https://morez.co
  * License:           GPLv3 or later
@@ -26,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MRZPFE_VERSION', '1.5.0' );
+define( 'MRZPFE_VERSION', '1.5.1' );
 define( 'MRZPFE_FILE', __FILE__ );
 define( 'MRZPFE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MRZPFE_URL', plugin_dir_url( __FILE__ ) );
@@ -55,6 +57,17 @@ spl_autoload_register(
 
 		if ( file_exists( $path ) ) {
 			require_once $path;
+		}
+	}
+);
+
+// Le plugin ne lit ni n'écrit aucune commande : compatible HPOS (tables de
+// commandes personnalisées) sans adaptation.
+add_action(
+	'before_woocommerce_init',
+	static function () {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 		}
 	}
 );
