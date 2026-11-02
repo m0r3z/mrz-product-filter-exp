@@ -57,7 +57,7 @@ final class Query {
 		if ( ! isset( $_GET[ $param ] ) ) {
 			return array();
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- chaque slug passe par sanitize_title() juste en dessous.
 		$raw = wp_unslash( $_GET[ $param ] );
 
 		$parts = is_array( $raw ) ? $raw : explode( ',', (string) $raw );

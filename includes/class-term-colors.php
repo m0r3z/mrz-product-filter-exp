@@ -70,7 +70,7 @@ final class TermColors {
 		}
 
 		$color = isset( $_POST['mrzpfe_color'] )
-			? mrzpfe_sanitize_hex_color( wp_unslash( $_POST['mrzpfe_color'] ) )
+			? mrzpfe_sanitize_hex_color( wp_unslash( $_POST['mrzpfe_color'] ) ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- validée par mrzpfe_sanitize_hex_color() (#rgb ou #rrggbb, sinon vide).
 			: '';
 
 		if ( '' === $color ) {

@@ -55,14 +55,15 @@ final class Renderer {
 			$chosen['terms'][ $param ]   = $slugs;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- filtre prix public en GET.
+		// Filtre prix public en GET : pas de nonce, valeur forcée en nombre.
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( isset( $_GET['min_price'] ) ) {
 			$chosen['min_price'] = (float) wp_unslash( $_GET['min_price'] );
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- filtre prix public en GET.
 		if ( isset( $_GET['max_price'] ) ) {
 			$chosen['max_price'] = (float) wp_unslash( $_GET['max_price'] );
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		return $chosen;
 	}

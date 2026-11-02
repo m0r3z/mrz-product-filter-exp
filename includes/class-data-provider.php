@@ -128,7 +128,7 @@ final class DataProvider {
 		}
 
 		$lookup = $wpdb->prefix . 'wc_product_meta_lookup';
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- table de lookup WooCommerce, nom de table non paramétrable, résultat mis en cache via transient.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- table de lookup WooCommerce, nom de table non paramétrable, résultat mis en cache via transient.
 		$row = $wpdb->get_row( "SELECT MIN(min_price) AS min_price, MAX(max_price) AS max_price FROM {$lookup} WHERE min_price IS NOT NULL" );
 
 		$min = ( $row && null !== $row->min_price ) ? (float) $row->min_price : 0;
@@ -349,7 +349,7 @@ final class DataProvider {
 		}
 		$sql .= ' GROUP BY t.term_id, t.name, t.slug ORDER BY t.name ASC';
 
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- $sql ne contient que des noms de tables core et des placeholders, toutes les valeurs passent par prepare() ; get_terms() ne sait pas compter les termes sur un sous-ensemble de produits.
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter -- $sql ne contient que des noms de tables core et des placeholders, toutes les valeurs passent par prepare() ; get_terms() ne sait pas compter les termes sur un sous-ensemble de produits.
 		$rows = $wpdb->get_results( $wpdb->prepare( $sql, $params ) );
 
 		return is_array( $rows ) ? $rows : array();

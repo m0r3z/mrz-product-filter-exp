@@ -73,7 +73,7 @@ final class AutoDisplay {
 			$aside_class .= ' is-sticky';
 			$aside_style  = sprintf( ' style="--mrz-pfe-sticky-top:%dpx"', $this->sticky_offset );
 		}
-		echo '<div class="mrz-product-filter-exp-layout mrz-product-filter-exp-layout--left"><aside class="' . esc_attr( $aside_class ) . '"' . $aside_style . '>'; // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped -- $aside_style est construit à partir d'un entier.
+		echo '<div class="mrz-product-filter-exp-layout mrz-product-filter-exp-layout--left"><aside class="' . esc_attr( $aside_class ) . '"' . $aside_style . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $aside_style est construit à partir d'un entier.
 		$this->render_panel();
 		echo '</aside><div class="mrz-product-filter-exp-main">';
 	}
@@ -84,7 +84,7 @@ final class AutoDisplay {
 
 	public function render_panel() {
 		// HTML de confiance généré par Renderer (valeurs déjà échappées dans la vue).
-		echo Renderer::render( $this->active_id ); // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped
+		echo Renderer::render( $this->active_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML généré par la vue, valeurs échappées à la source.
 	}
 
 	/**

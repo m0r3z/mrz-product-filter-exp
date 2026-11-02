@@ -11,6 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Vue incluse depuis une méthode : ses variables sont locales, pas globales.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
 use Mrzpfe\Renderer;
 
 // Liste de tous les paramètres gérés, pour construire l'URL de réinitialisation.

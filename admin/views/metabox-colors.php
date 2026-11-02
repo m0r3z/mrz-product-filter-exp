@@ -10,6 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Vue incluse depuis une méthode : ses variables sont locales, pas globales.
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
 use Mrzpfe\DataProvider;
 use Mrzpfe\TermColors;
 
