@@ -5,15 +5,15 @@ Filtres de produits WooCommerce (catégories, attributs, étiquettes, prix, past
 ## Fonctionnement
 
 - Chaque **jeu de filtres** est un post d'un CPT dédié (`Jeux de filtres`) avec ses métaboxes.
-- On y choisit les **sources** (catégories, étiquettes, attributs), leur mode d'affichage (cases à cocher, boutons radio, menu déroulant) et l'ordre (glisser-déposer).
+- On y choisit les **sources** (catégories, étiquettes, marques, attributs), leur mode d'affichage (cases à cocher, boutons radio, menu déroulant) et l'ordre (glisser-déposer).
 - Un **attribut « couleur »** peut être rendu en pastilles ; la couleur est stockée sur chaque terme (réutilisable, éditable aussi depuis Produits → Attributs).
 - Le panneau s'affiche **automatiquement** sur la boutique / les archives (colonne gauche ou au-dessus), ou manuellement via `[mrzpfe_product_filter id="X"]`.
 
 ## Filtrage
 
-- Le filtrage s'appuie sur les **paramètres d'URL natifs WooCommerce** (`filter_{attribut}`, `min_price`, `max_price`) et sur des paramètres propres pour catégories/étiquettes (`mpf_product_cat`, `mpf_product_tag`).
+- Le filtrage s'appuie sur les **paramètres d'URL natifs WooCommerce** (`filter_{attribut}`, `min_price`, `max_price`) et sur des paramètres propres pour catégories, étiquettes et marques (`mpf_product_cat`, `mpf_product_tag`, `mpf_product_brand`).
 - Avec JavaScript : la boucle produits (`ul.products`) est rafraîchie en **AJAX**, l'URL est mise à jour.
-- Sans JavaScript : le formulaire recharge la page et WooCommerce filtre nativement (attributs / prix) ; catégories et étiquettes sont injectées dans la requête principale par le plugin.
+- Sans JavaScript : le formulaire recharge la page et WooCommerce filtre nativement (attributs / prix) ; catégories, étiquettes et marques sont injectées dans la requête principale par le plugin.
 
 ## Prérequis
 
