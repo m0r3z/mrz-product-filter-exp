@@ -269,11 +269,6 @@ msgctxt "post type singular name"
 msgid "Filter set"
 msgstr "Jeu de filtres"
 
-#: includes/class-cpt.php:25
-msgctxt "admin menu"
-msgid "MRZ Product Filter"
-msgstr "MRZ Product Filter"
-
 #: includes/class-cpt.php:26
 msgctxt "add new on admin bar"
 msgid "Filter set"
@@ -403,3 +398,8 @@ msgstr "Erreur de chargement."
 #: includes/class-filter-config.php:302
 msgid "Network error."
 msgstr "Erreur réseau."
+
+#: includes/class-cpt.php:25
+msgctxt "admin menu"
+msgid "MRZ Filter"
+msgstr "MRZ Filter"

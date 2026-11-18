@@ -22,7 +22,7 @@ final class CPT {
 		$labels = array(
 			'name'               => _x( 'Filter sets', 'post type general name', 'mrz-product-filter-exp' ),
 			'singular_name'      => _x( 'Filter set', 'post type singular name', 'mrz-product-filter-exp' ),
-			'menu_name'          => _x( 'MRZ Product Filter', 'admin menu', 'mrz-product-filter-exp' ),
+			'menu_name'          => _x( 'MRZ Filter', 'admin menu', 'mrz-product-filter-exp' ),
 			'name_admin_bar'     => _x( 'Filter set', 'add new on admin bar', 'mrz-product-filter-exp' ),
 			'add_new'            => _x( 'Add', 'filter set', 'mrz-product-filter-exp' ),
 			'add_new_item'       => __( 'Add filter set', 'mrz-product-filter-exp' ),
