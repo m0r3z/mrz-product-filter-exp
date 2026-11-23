@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,9 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.5.4 =
+* Changed: the admin menu label is shortened to "MRZ Filter" so it fits on one line.
 
 = 1.5.3 =
 * Fixed: the price fields no longer overflow the filter column when the theme adds padding to inputs.
