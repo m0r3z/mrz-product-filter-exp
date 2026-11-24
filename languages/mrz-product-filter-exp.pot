@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Product Filter Exp 1.5.4\n"
+"Project-Id-Version: MRZ Product Filter Exp 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-product-filter-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-18T14:14:20+00:00\n"
+"POT-Creation-Date: 2026-11-24T16:18:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mrz-product-filter-exp\n"
@@ -383,23 +383,23 @@ msgstr ""
 msgid "Color shown as a swatch in the color filter."
 msgstr ""
 
-#: public/views/filter-panel.php:33
+#: public/views/filter-panel.php:38
 msgid "Filters"
 msgstr ""
 
-#: public/views/filter-panel.php:56
-#: public/views/filter-panel.php:93
+#: public/views/filter-panel.php:62
+#: public/views/filter-panel.php:99
 msgid "— All —"
 msgstr ""
 
-#: public/views/filter-panel.php:130
+#: public/views/filter-panel.php:136
 msgid "Minimum price"
 msgstr ""
 
-#: public/views/filter-panel.php:135
+#: public/views/filter-panel.php:141
 msgid "Maximum price"
 msgstr ""
 
-#: public/views/filter-panel.php:144
+#: public/views/filter-panel.php:150
 msgid "Filter"
 msgstr ""

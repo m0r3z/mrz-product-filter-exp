@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: MRZ Product Filter Exp 1.5.4\n"
+"Project-Id-Version: MRZ Product Filter Exp 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mrz-product-filter-exp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French\n"
@@ -370,24 +370,24 @@ msgstr "Couleur du filtre"
 msgid "Color shown as a swatch in the color filter."
 msgstr "Couleur affichée en pastille dans le filtre par couleur."
 
-#: public/views/filter-panel.php:33
+#: public/views/filter-panel.php:38
 msgid "Filters"
 msgstr "Filtres"
 
-#: public/views/filter-panel.php:56
-#: public/views/filter-panel.php:93
+#: public/views/filter-panel.php:62
+#: public/views/filter-panel.php:99
 msgid "— All —"
 msgstr "— Tous —"
 
-#: public/views/filter-panel.php:130
+#: public/views/filter-panel.php:136
 msgid "Minimum price"
 msgstr "Prix minimum"
 
-#: public/views/filter-panel.php:135
+#: public/views/filter-panel.php:141
 msgid "Maximum price"
 msgstr "Prix maximum"
 
-#: public/views/filter-panel.php:144
+#: public/views/filter-panel.php:150
 msgid "Filter"
 msgstr "Filtrer"
 

@@ -4,7 +4,7 @@ Tags: woocommerce, product filter, layered nav, filters, ajax
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.5.4
+Stable tag: 1.6.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,11 @@ Development happens publicly on GitHub: https://github.com/m0r3z/mrz-product-fil
 4. Enable automatic display on the shop / archives, or copy the shortcode into a page.
 
 == Changelog ==
+
+= 1.6.0 =
+* Changed: filters placed above the shop are now displayed as compact pills with dropdown menus, on desktop and mobile. The left column layout is unchanged.
+* Changed: above the shop, sections always start closed (the "expanded by default" setting only applies to the left column), and the "Filter" button is hidden when JavaScript is available, since each choice applies immediately.
+* New: pills with an active filter are highlighted (`is-active` class). The pill radius can be changed with the `--mrz-pfe-pill-radius` CSS variable.
 
 = 1.5.4 =
 * Changed: the admin menu label is shortened to "MRZ Filter" so it fits on one line.
