@@ -22,6 +22,10 @@ foreach ( $config['sections'] as $s ) {
 	$all_params[] = $s['param'];
 }
 $reset_url = remove_query_arg( $all_params );
+
+// Au-dessus de la boutique, les sections sont des menus déroulants :
+// jamais ouvertes au chargement, et pas de bouton « Filtres » sur mobile.
+$is_top = ( 'top' === $config['position'] );
 ?>
 <div
 	class="mrz-product-filter-exp mrz-product-filter-exp--<?php echo esc_attr( $config['position'] ); ?><?php echo ! empty( $config['sticky'] ) ? ' mrz-product-filter-exp--sticky' : ''; ?>"
@@ -29,9 +33,11 @@ $reset_url = remove_query_arg( $all_params );
 	<?php if ( ! empty( $config['sticky'] ) ) : ?>style="--mrz-pfe-sticky-top:<?php echo (int) $config['sticky_offset']; ?>px"<?php endif; ?>
 	data-mrz-product-filter-exp="1"
 >
-	<button type="button" class="mrz-product-filter-exp-toggle" aria-expanded="false">
-		<?php esc_html_e( 'Filters', 'mrz-product-filter-exp' ); ?>
-	</button>
+	<?php if ( ! $is_top ) : ?>
+		<button type="button" class="mrz-product-filter-exp-toggle" aria-expanded="false">
+			<?php esc_html_e( 'Filters', 'mrz-product-filter-exp' ); ?>
+		</button>
+	<?php endif; ?>
 	<form class="mrz-product-filter-exp-form" method="get" action="">
 		<?php foreach ( $config['sections'] as $section ) : ?>
 			<?php
@@ -43,7 +49,7 @@ $reset_url = remove_query_arg( $all_params );
 			$field_name = $param;
 			$is_attr    = ( 0 === strpos( $param, 'filter_' ) );
 			?>
-			<details class="mrz-product-filter-exp-section" data-param="<?php echo esc_attr( $param ); ?>" data-logic="<?php echo esc_attr( $section['logic'] ); ?>"<?php echo $section['open'] ? ' open' : ''; ?>>
+			<details class="mrz-product-filter-exp-section" data-param="<?php echo esc_attr( $param ); ?>" data-logic="<?php echo esc_attr( $section['logic'] ); ?>"<?php echo ( $section['open'] && ! $is_top ) ? ' open' : ''; ?>>
 				<summary class="mrz-product-filter-exp-title"><?php echo esc_html( $section['label'] ); ?></summary>
 				<?php if ( $is_attr ) : ?>
 					<?php // Logique OU/ET pour cet attribut (fallback sans JS ; le JS le repositionne). ?>
@@ -121,7 +127,7 @@ $reset_url = remove_query_arg( $all_params );
 			$cur_min   = ( '' !== $chosen['min_price'] ) ? (int) $chosen['min_price'] : $price['min'];
 			$cur_max   = ( '' !== $chosen['max_price'] ) ? (int) $chosen['max_price'] : $price['max'];
 			?>
-			<details class="mrz-product-filter-exp-section mrz-product-filter-exp-price" data-min="<?php echo esc_attr( $price['min'] ); ?>" data-max="<?php echo esc_attr( $price['max'] ); ?>"<?php echo $price['open'] ? ' open' : ''; ?>>
+			<details class="mrz-product-filter-exp-section mrz-product-filter-exp-price" data-min="<?php echo esc_attr( $price['min'] ); ?>" data-max="<?php echo esc_attr( $price['max'] ); ?>"<?php echo ( $price['open'] && ! $is_top ) ? ' open' : ''; ?>>
 				<summary class="mrz-product-filter-exp-title"><?php echo esc_html( $price['label'] ); ?></summary>
 				<div class="mrz-product-filter-exp-options">
 					<div class="mrz-product-filter-exp-price-slider" aria-hidden="true"></div>

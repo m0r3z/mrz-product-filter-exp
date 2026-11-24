@@ -210,7 +210,118 @@
 	}
 }
 
-/* Mobile : le panneau devient un menu « Filtres » replié par défaut. */
+/* Au-dessus de la boutique : pastilles à menu déroulant, sur tous les écrans. */
+.mrz-product-filter-exp--top {
+	position: relative;
+	z-index: 20;
+	margin-bottom: 20px;
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-section {
+	position: relative;
+	margin: 0;
+	border: 0;
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 16px;
+	border: 1px solid #ccc;
+	border-radius: var(--mrz-pfe-pill-radius, 999px);
+	background: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: 0;
+	text-transform: none;
+	white-space: nowrap;
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-title:hover,
+.mrz-product-filter-exp--top .mrz-product-filter-exp-section[open] > .mrz-product-filter-exp-title,
+.mrz-product-filter-exp--top .is-active > .mrz-product-filter-exp-title {
+	border-color: #111;
+}
+
+.mrz-product-filter-exp--top .is-active > .mrz-product-filter-exp-title {
+	font-weight: 600;
+}
+
+/* Chevron. */
+.mrz-product-filter-exp--top .mrz-product-filter-exp-title::after,
+.mrz-product-filter-exp--top .mrz-product-filter-exp-section[open] > .mrz-product-filter-exp-title::after {
+	content: "";
+	float: none;
+	width: 8px;
+	height: 8px;
+	border: solid currentColor;
+	border-width: 0 1px 1px 0;
+	transform: translateY(-2px) rotate(45deg);
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-section[open] > .mrz-product-filter-exp-title::after {
+	transform: translateY(2px) rotate(-135deg);
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-options {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 0;
+	z-index: 1;
+	width: max-content;
+	min-width: max(100%, 220px);
+	max-width: 320px;
+	max-height: 360px;
+	margin: 0;
+	padding: 12px 16px;
+	overflow-y: auto;
+	border: 1px solid #111;
+	background: #fff;
+}
+
+.mrz-product-filter-exp--top .is-end > .mrz-product-filter-exp-options {
+	right: 0;
+	left: auto;
+}
+
+.mrz-product-filter-exp--top .mrz-product-filter-exp-actions {
+	margin-top: 0;
+}
+
+/* Chaque choix s'applique tout seul : bouton gardé seulement sans JS. */
+.mrz-product-filter-exp--top.has-js .mrz-product-filter-exp-submit {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.mrz-product-filter-exp--top.mrz-product-filter-exp--sticky {
+		position: sticky;
+	}
+}
+
+/* Mobile : le menu prend toute la largeur, sous l'ensemble des pastilles. */
+@media (max-width: 767px) {
+	.mrz-product-filter-exp--top .mrz-product-filter-exp-section {
+		position: static;
+	}
+
+	.mrz-product-filter-exp--top .mrz-product-filter-exp-section > .mrz-product-filter-exp-options {
+		right: 0;
+		left: 0;
+		width: auto;
+		max-width: none;
+	}
+}
+
+/* Mobile (colonne gauche) : le panneau devient un menu « Filtres » replié par défaut. */
 @media (max-width: 767px) {
 	.mrz-product-filter-exp--left {
 		max-width: none;

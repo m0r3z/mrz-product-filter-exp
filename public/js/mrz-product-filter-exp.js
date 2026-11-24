@@ -38,6 +38,11 @@
 			});
 		}
 
+		markActive(form);
+		if (wrapper.classList.contains('mrz-product-filter-exp--top')) {
+			initDropdowns(wrapper);
+		}
+
 		var resultsEl = ensureResults();
 
 		// Paramètres gérés par ce panneau (à réinitialiser dans l'URL).
@@ -157,6 +162,7 @@
 		}
 
 		function apply() {
+			markActive(form);
 			loadUrl(buildUrl());
 		}
 
@@ -187,6 +193,60 @@
 
 		// Retour navigateur : recharge l'état natif de la page.
 		window.addEventListener('popstate', function () { window.location.reload(); });
+	}
+
+	// Signale les sections qui portent un filtre actif (classe is-active).
+	function markActive(form) {
+		form.querySelectorAll('.mrz-product-filter-exp-section').forEach(function (sec) {
+			var active = Array.prototype.some.call(sec.querySelectorAll('input:checked, select'), function (el) {
+				return el.value !== '';
+			});
+			var minIn = sec.querySelector('.mrz-product-filter-exp-price-min');
+			var maxIn = sec.querySelector('.mrz-product-filter-exp-price-max');
+			if (minIn && maxIn) {
+				active = minIn.value !== sec.getAttribute('data-min') || maxIn.value !== sec.getAttribute('data-max');
+			}
+			sec.classList.toggle('is-active', active);
+		});
+	}
+
+	// Panneau au-dessus de la boutique : menus déroulants.
+	function initDropdowns(wrapper) {
+		// Le CSS masque alors le bouton « Filtrer », utile seulement sans JS.
+		wrapper.classList.add('has-js');
+
+		var sections = wrapper.querySelectorAll('.mrz-product-filter-exp-section');
+
+		function closeAll(except) {
+			sections.forEach(function (sec) {
+				if (sec !== except) { sec.open = false; }
+			});
+		}
+
+		sections.forEach(function (sec) {
+			sec.addEventListener('toggle', function () {
+				if (!sec.open) { return; }
+				closeAll(sec);
+				// Aligne le menu à droite de la pastille s'il dépasse de l'écran.
+				sec.classList.remove('is-end');
+				var menu = sec.querySelector('.mrz-product-filter-exp-options');
+				if (menu && menu.getBoundingClientRect().right > document.documentElement.clientWidth) {
+					sec.classList.add('is-end');
+				}
+			});
+		});
+
+		// pointerdown : iOS n'envoie pas de click sur les zones non interactives.
+		document.addEventListener('pointerdown', function (e) {
+			closeAll(e.target.closest('.mrz-product-filter-exp-section'));
+		});
+
+		wrapper.addEventListener('keydown', function (e) {
+			var sec = e.target.closest('.mrz-product-filter-exp-section[open]');
+			if (e.key !== 'Escape' || !sec) { return; }
+			sec.open = false;
+			sec.querySelector('summary').focus();
+		});
 	}
 
 	function initPriceSlider(wrapper, apply) {
